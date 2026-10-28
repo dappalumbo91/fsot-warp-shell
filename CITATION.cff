@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "FSOT warp shell: a 0.10c Eulerian pass in Warp Factory"
+message: "If you use this record, cite it."
+type: software
+authors:
+  - family-names: Palumbo
+    given-names: Damian Arthur
+repository-code: "https://github.com/dappalumbo91/fsot-warp-shell"
+license: Apache-2.0
+year: 2026
+identifiers: []

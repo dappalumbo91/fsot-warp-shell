@@ -1,0 +1,12 @@
+Rbig=9811.159 R1big=1399.567 mbig=3.303043e+30
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak
+S(0)=1.00000 S(4587)=0.77093 S(7756)=0.07248 S(7933)=0.05099 S(R2)=0.00000
+dS(4587)=-1.459089e-04 dS(7756)=-1.351968e-04 dS(7933)=-1.077446e-04 peak |dS/dr|=2.673079e-04 at r=6372.9
+N=160 h=166.790
+
+== mix v=0.11  h=166.790  max|g_tx|=0.1100
+null worst/peak=3.398e-02 at r=7766.92 m (wall) g_tx=-0.0078 off-axis=86.9 deg rho=7.394e+34
+weak worst/peak=3.398e-02 at r=7766.92 m (wall) g_tx=-0.0078 off-axis=86.9 deg rho=7.394e+34
+strong worst/peak=3.398e-02 at r=7766.92 m (wall) g_tx=-0.0078 off-axis=86.9 deg rho=7.394e+34
+dominant worst/peak=1.746e-01 at r=7759.76 m (wall) g_tx=-0.0079 off-axis=88.2 deg rho=7.395e+34
+E=4.0623e+30 nec=3.398e-02 dec=1.746e-01 ser=0.0119 shift=1.100e-01 FAIL 23.7s
