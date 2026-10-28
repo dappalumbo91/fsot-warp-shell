@@ -212,6 +212,47 @@ def fig_resolution():
     save(fig, "resolution")
 
 
+def fig_center():
+    text = (DATA / "dial_center.txt").read_text(encoding="utf-8").splitlines()
+    cases = []
+    current = None
+    for line in text:
+        if line.startswith("== center "):
+            parts = line.split()
+            # == center N=160 v=0.00 h=166.790 ...
+            n = int(parts[2].split("=")[1])
+            v = float(parts[3].split("=")[1])
+            h = float(parts[4].split("=")[1])
+            current = {"n": n, "v": v, "h": h, "bins": {}}
+            cases.append(current)
+        elif current is not None and line.startswith("r<h"):
+            cols = line.split()
+            current["bins"]["center"] = float(cols[4])
+        elif current is not None and line.startswith("h..2h"):
+            cols = line.split()
+            current["bins"]["next"] = float(cols[4])
+    fig, ax = plt.subplots(figsize=(8.2, 4.6), layout="constrained")
+    import numpy as np
+
+    x = np.arange(len(cases))
+    weak = [c["bins"]["center"] for c in cases]
+    colors = [FAIL if w < -1e-3 else PASS for w in weak]
+    ax.bar(x, weak, color=colors, width=0.62)
+    ax.axhline(-1e-3, color=INK, ls="--", lw=1, label="Clean bar, −1e-3")
+    ax.axhline(0, color="#b7c3cc", lw=1)
+    labels = []
+    for c in cases:
+        speed = "shift off" if c["v"] == 0 else "0.10c"
+        labels.append(f"{c['h']:.1f} m\n{speed}")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_ylabel("Weak ratio at the four origin samples")
+    ax.set_ylim(-2.0e-3, 0.4e-3)
+    ax.set_title("Fine-grid miss sits on the origin samples.\nOne spacing outward, the weak ratio is positive.")
+    ax.legend(frameon=False, loc="lower left")
+    save(fig, "center")
+
+
 def fig_geometry(r1, r2):
     fig, ax = plt.subplots(figsize=(8.6, 2.8))
     ax.barh(0, r2 / 1000, color="#1f4e79", height=0.45, label="Wall")
@@ -236,6 +277,7 @@ def main():
     fig_speed()
     fig_conditions()
     fig_resolution()
+    fig_center()
     fig_limb()
     fig_geometry(r1, r2)
     compact = 2 * G_WF * mass / (C_WF * C_WF * r2)

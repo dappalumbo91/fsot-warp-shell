@@ -4,7 +4,8 @@
 
 The pin check runs when FSOT_VENDOR points at a directory that contains
 fsot_compute.py and fsot_dynamics.py (the FSOT 2.1 AEB2AD vendor tree).
-The algebra, the shell file, and data/dial_mix.txt do not need it.
+The algebra, the shell file, and the two scored logs do not need it.
+data/dial_mix_fine.txt is checked as a recorded failure, not as a pass.
 """
 
 from __future__ import annotations
@@ -18,6 +19,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SHELL = ROOT / "data" / "shell_env.txt"
 LOG = ROOT / "data" / "dial_mix.txt"
+FINE = ROOT / "data" / "dial_mix_fine.txt"
+CENTER = ROOT / "data" / "dial_center.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -131,11 +134,35 @@ def log() -> None:
     check("0.10 limb dominant", bool(rows) and doms == {"0.0000"}, f"{len(rows)} rows {sorted(doms)}")
 
 
+def fine_log() -> None:
+    text = FINE.read_text(encoding="utf-8")
+    check(
+        "83.4 m summary is the recorded failure",
+        "E=4.0657e+30 nec=7.016e-04 dec=5.506e-07 ser=0.0000 shift=1.000e-01 FAIL" in text,
+        "dial_mix_fine.txt",
+    )
+    check(
+        "83.4 m weak ratio is the cavity sample",
+        "weak worst/peak=1.476e-03 at r=58.97 m (cavity)" in text,
+        "dial_mix_fine.txt",
+    )
+
+
+def center_log() -> None:
+    text = CENTER.read_text(encoding="utf-8")
+    check("center census finished", "center census done" in text, "dial_center.txt")
+    check("83.4 m shift off misses at the origin", "-1.480697e-03" in text and "== center N=320 v=0.00" in text, "dial_center.txt")
+    check("83.4 m shift on matches the fine log", "-1.476078e-03" in text and "== center N=320 v=0.10" in text, "dial_center.txt")
+    check("166.8 m shift off origin sample", "-7.515213e-04" in text and "== center N=160 v=0.00" in text, "dial_center.txt")
+
+
 def main() -> int:
     algebra()
     shell_file()
     pin()
     log()
+    fine_log()
+    center_log()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0
 
