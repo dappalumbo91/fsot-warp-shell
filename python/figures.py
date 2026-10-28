@@ -115,7 +115,7 @@ def fig_speed():
     ax.set_xlim(0, 0.125)
     ax.set_ylim(-0.7, 2.7)
     ax.invert_yaxis()
-    ax.set_title("Eulerian Warp Factory speeds")
+    ax.set_title("Eulerian Warp Factory speeds\n0.10c is five times the published pass. 0.11c fails in the wall.")
     ax.scatter([], [], color=PASS, label="Under the clean bar")
     ax.scatter([], [], color=FAIL, label="Over the clean bar")
     ax.legend(frameon=False, loc="center left", bbox_to_anchor=(1.01, 0.5))

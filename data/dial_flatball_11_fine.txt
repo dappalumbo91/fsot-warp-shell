@@ -1,0 +1,13 @@
+Rbig=9811.159 R1big=1399.567 mbig=3.303043e+30
+flat ball: r < 87.5498 m, first smoothed density 4.989651e+05 kg/m^3
+inside that radius the radial B and the mix are exactly flat
+building N=320 h=83.395 v=0.11
+
+== raw N=320 v=0.11  minWeak=-3.549428e-02 nFlat=4
+== flat N=320 v=0.11 h=83.395 pk=7.640894e+34 nFlat=4
+null=3.549428e-02 weak=3.549428e-02 strong=3.549428e-02 dom=1.771462e-01 ser=1.1116e-02 E=4.0628e+30 shift=1.100e-01 FAIL 234.1s
+null worst=3.549428e-02 at r=7727.65 off=86.6
+weak worst=3.549428e-02 at r=7727.65 off=86.6
+strong worst=3.549428e-02 at r=7727.65 off=86.6
+dominant worst=1.771462e-01 at r=7719.54 off=87.8
+flat ball done

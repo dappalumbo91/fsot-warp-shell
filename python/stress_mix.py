@@ -6,6 +6,7 @@ The pin check runs when FSOT_VENDOR points at a directory that contains
 fsot_compute.py and fsot_dynamics.py (the FSOT 2.1 AEB2AD vendor tree).
 The algebra, the shell file, and the two scored logs do not need it.
 data/dial_mix_fine.txt is checked as a recorded failure, not as a pass.
+data/dial_flatball_11_fine.txt is the 0.11c wall on the 83.4 m grid, also a recorded failure.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ LOG = ROOT / "data" / "dial_mix.txt"
 FINE = ROOT / "data" / "dial_mix_fine.txt"
 CENTER = ROOT / "data" / "dial_center.txt"
 FLAT = ROOT / "data" / "dial_flatball.txt"
+FLAT11 = ROOT / "data" / "dial_flatball_11_fine.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -170,6 +172,22 @@ def flat_log() -> None:
     check("83.4 m restores four cells", "== raw N=320 v=0.10  minWeak=-1.476078e-03 nFlat=4" in text, "dial_flatball.txt")
 
 
+def flat11_log() -> None:
+    text = FLAT11.read_text(encoding="utf-8")
+    check("0.11c fine flat ball finished", "flat ball done" in text, "dial_flatball_11_fine.txt")
+    check(
+        "83.4 m 0.11c wall is the recorded failure",
+        "null=3.549428e-02 weak=3.549428e-02 strong=3.549428e-02 dom=1.771462e-01" in text
+        and "FAIL" in text,
+        "dial_flatball_11_fine.txt",
+    )
+    check(
+        "83.4 m 0.11c restores four cells",
+        "== raw N=320 v=0.11  minWeak=-3.549428e-02 nFlat=4" in text,
+        "dial_flatball_11_fine.txt",
+    )
+
+
 def main() -> int:
     algebra()
     shell_file()
@@ -178,6 +196,7 @@ def main() -> int:
     fine_log()
     center_log()
     flat_log()
+    flat11_log()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0
 
