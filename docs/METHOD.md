@@ -69,6 +69,8 @@ The scored grid at the clean point has `N = 160` and spacing `h = 166.790 m`. Th
 
 The center census in `data/dial_center.txt` repeats both grids with the shift amplitude set to 0. The negative cavity cells are the four diagonal samples at `r = h / √2`. With the shift off, the 83.4 m weak ratio at that sample is 1.481×10⁻³, and the weak ratio times the sample radius is 0.0886 m on the coarse grid and 0.0873 m on the fine grid. One spacing farther out, the minimum weak ratio is positive on both grids.
 
+The smoothed shell density is exactly zero for r < 87.55 m, and `B = 1` on that same interval. The shift profile is exactly 1 out past 500 m. Inside r < 87.55 m the continuum stress-energy is zero. The 83.4 m samples at 59 m lie in that ball. The 166.8 m samples at 118 m do not. `data/dial_flatball.txt` sets the stress-energy of every scored cell inside the ball back to zero and leaves every other cell on the Cartesian difference. The 166.8 m score has no such cell. The 83.4 m score then has its worst weak ratio at 4.006×10⁻⁷ in the exterior skirt.
+
 ## What was varied
 
 Same body, same mass, same smoother. The ordinary compact sigmoid is clean at 0.075c and fails at 0.08c on the side of the wall. The blend `s(1 + p - s)` is clean through 0.095c and fails at 0.10c on the outer limb. The mix above is clean at 0.095c and at 0.10c on the 166.8 m grid. The same mix at 0.11c fails in the outer wall. Later joins that tried to hand the tail to the sigmoid also failed, and they lost the 0.10c pass with them. On the 166.8 m grid the pass remains the mix at 0.10c. The same metric at 83.4 m fails the weak ratio at the cavity center.

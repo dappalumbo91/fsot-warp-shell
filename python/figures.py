@@ -253,6 +253,38 @@ def fig_center():
     save(fig, "center")
 
 
+def fig_flatball():
+    raw = ratios(read_block(DATA / "dial_mix_fine.txt", "== mix fine v=0.10"))
+    text = (DATA / "dial_flatball.txt").read_text(encoding="utf-8").splitlines()
+    corr_line = next(s for s in text if "flat N=320 v=0.10" in s)
+    corr = text[text.index(corr_line) + 1]
+    vals = {}
+    for tok in corr.split():
+        if "=" in tok:
+            k, v = tok.split("=")
+            vals[k] = float(v)
+    keys = ["null", "weak", "strong", "dom"]
+    labels = ["Null", "Weak", "Strong", "Dominant"]
+    fig, ax = plt.subplots(figsize=(7.6, 4.6), layout="constrained")
+    import numpy as np
+
+    x = np.arange(4)
+    w = 0.36
+    raw_y = [raw["null"], raw["weak"], raw["strong"], raw["dominant"]]
+    cor_y = [vals["null"], vals["weak"], vals["strong"], vals["dom"]]
+    ax.bar(x - w / 2, raw_y, w, color=FAIL, label="Raw difference")
+    ax.bar(x + w / 2, cor_y, w, color=PASS, label="Flat ball restored")
+    ax.axhline(1e-3, color=INK, ls="--", lw=1)
+    ax.set_yscale("log")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_ylabel("Worst violation / peak |energy density|")
+    ax.set_title("83.4 m grid at 0.10c.\nFour flat-ball cells restored to zero.")
+    ax.legend(frameon=False)
+    ax.set_ylim(1e-8, 3e-2)
+    save(fig, "flatball")
+
+
 def fig_geometry(r1, r2):
     fig, ax = plt.subplots(figsize=(8.6, 2.8))
     ax.barh(0, r2 / 1000, color="#1f4e79", height=0.45, label="Wall")
@@ -278,6 +310,7 @@ def main():
     fig_conditions()
     fig_resolution()
     fig_center()
+    fig_flatball()
     fig_limb()
     fig_geometry(r1, r2)
     compact = 2 * G_WF * mass / (C_WF * C_WF * r2)

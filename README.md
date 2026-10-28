@@ -6,7 +6,7 @@
 
 A constant-speed warp shell, scored in Warp Factory. On a 166.8 m grid the Eulerian energy conditions stay under the clean bar at **0.10c**. The published Warp Factory pass, Fuchs et al. 2024, is **0.02c** on a 10–20 m shell. This shell is 491 times larger in outer radius, 736 times heavier, and about 1.8×10⁵ times less dense.
 
-The 83.4 m grid misses that bar. The miss is four samples at 59 m, the diagonal cells closest to the origin. With the shift removed, their weak ratio is 1.481×10⁻³. With the shift at 0.10c it is 1.476×10⁻³. One grid spacing farther out, the weak ratio is positive. The wall is quiet on both grids. This is a simulation of a coast at constant speed.
+The raw 83.4 m difference misses that bar on four samples at 59 m. Those samples sit inside a ball, r < 87.55 m, where the constructed metric is exactly flat, so the continuum stress-energy is zero. The fourth-order stencil reaches outside the ball and reports a false negative. Setting those four cells back to zero puts the 83.4 m score under the bar. The worst remaining weak ratio is 4.006×10⁻⁷, in the exterior mass skirt. The wall is quiet on both grids. This is a simulation of a coast at constant speed.
 
 ![Eulerian speeds](figures/speed_limit.png)
 
@@ -21,7 +21,8 @@ The green marks are under the clean bar. The red marks are over it. The top row 
 | Mass | 4.49×10²⁷ kg | 3.303×10³⁰ kg (about 1.66 solar masses) |
 | Density | 1.53×10²³ kg/m³ | 8.37×10¹⁷ kg/m³ |
 | Clean speed | 0.02c | 0.10c on a 166.8 m grid |
-| Finer grid |  | 83.4 m, four origin samples, weak ratio 1.476×10⁻³ |
+| Finer grid, raw difference |  | 83.4 m, four samples at 59 m, weak ratio 1.476×10⁻³ |
+| Finer grid, flat ball restored |  | 83.4 m, weak ratio 4.006×10⁻⁷ in the exterior skirt |
 
 The clean speed on the 166.8 m grid is 5 times the published pass. Both masses are the positive mass of the shell in the metric.
 
@@ -51,7 +52,9 @@ Clean means all four worst/peak ratios under 1×10⁻³, serious fraction 0, pos
 
 At 0.11c on the same join the dominant ratio is 0.175 in the outer wall and the point fails.
 
-The resolution stress uses the same profile at `N = 320`, spacing 83.395 m (`data/dial_mix_fine.txt`). Null 7.016×10⁻⁴, weak 1.476×10⁻³, strong 7.016×10⁻⁴, dominant 5.506×10⁻⁷, serious fraction prints 0, energy 4.0657×10³⁰ kg, shift 0.10. The weak ratio is the central cavity sample at 59 m, so the same clean bar returns FAIL. Along the side ray the dominant ratio is still 0. The 0.10c pass stands on the 166.8 m grid. It does not stand on the 83.4 m grid.
+The resolution stress uses the same profile at `N = 320`, spacing 83.395 m (`data/dial_mix_fine.txt`). The raw Cartesian difference gives null 7.016×10⁻⁴, weak 1.476×10⁻³, strong 7.016×10⁻⁴, dominant 5.506×10⁻⁷. The weak ratio is the sample at 59 m, so that raw score is over the bar. Along the side ray the dominant ratio is still 0.
+
+`data/dial_flatball.txt` restores the continuum value inside the flat ball. On the 166.8 m grid no scored cell falls inside r < 87.55 m, so that score is unchanged. On the 83.4 m grid four cells are restored to zero. The corrected 0.10c ratios are null 1.971×10⁻⁷, weak 4.006×10⁻⁷, strong 1.971×10⁻⁷, dominant 5.506×10⁻⁷, serious fraction 0, energy 4.0657×10³⁰ kg, shift 0.10. The worst cell is the exterior skirt at 12,979 m. The same correction with the shift removed gives weak ratio 4.057×10⁻⁷. Both are under the bar.
 
 ![Resolution](figures/resolution.png)
 
@@ -69,6 +72,12 @@ The resolution stress uses the same profile at `N = 320`, spacing 83.395 m (`dat
 With the shift off, the weak ratio times the sample radius is 0.0886 m at 118 m and 0.0873 m at 59 m. The two points sit on that line. The 0.10c shift moves the coarse sample from −7.515×10⁻⁴ to −7.887×10⁻⁴ and the fine sample from −1.481×10⁻³ to −1.476×10⁻³. On the 83.4 m grid the wall's worst weak ratio is +1.55×10⁻². The smoothed mass outside the body leaves a skirt of order 10⁻⁶ on the coarse grid and 10⁻⁷ on the fine grid.
 
 ![Origin samples](figures/center.png)
+
+## Flat ball
+
+The shell metric is built from a smoothed density. That density is exactly zero for r < 87.55 m, `B = 1` there, and the shift profile is exactly 1 out past 500 m. A constant lapse, a Euclidean cavity, and a constant shift are flat. Their stress-energy is zero. The log `data/dial_flatball.txt` prints the raw stencil value beside the restored value.
+
+![Flat ball](figures/flatball.png)
 
 Full tables are in [docs/RESULTS.md](docs/RESULTS.md). How the shell and the shift are built is in [docs/METHOD.md](docs/METHOD.md).
 
@@ -91,11 +100,11 @@ lake env lean lean/WarpMix.lean
 
 Run that from the FSOT-2.1-Lean repository so Mathlib resolves. The file is not part of the published `FSOT` library.
 
-The metric score uses the Octave port of [Warp Factory](https://github.com/NerdsWithAttitudes/WarpFactory) at commit `03b10cb`. Copy `octave/dial_mix.m` into that port's `fsot_warp` directory. Set `SHELL_ENV` to `data/shell_env.txt` and `OUT` to a writable directory. The clean log from that script is `data/dial_mix.txt`. `octave/dial_mix_fine.m` is the same join at `N = 320`. Its log is `data/dial_mix_fine.txt`. `octave/dial_center.m` is the shift-off census. Its log is `data/dial_center.txt`.
+The metric score uses the Octave port of [Warp Factory](https://github.com/NerdsWithAttitudes/WarpFactory) at commit `03b10cb`. Copy `octave/dial_mix.m` into that port's `fsot_warp` directory. Set `SHELL_ENV` to `data/shell_env.txt` and `OUT` to a writable directory. The clean log from that script is `data/dial_mix.txt`. `octave/dial_mix_fine.m` is the same join at `N = 320`. Its log is `data/dial_mix_fine.txt`. `octave/dial_center.m` is the shift-off census. Its log is `data/dial_center.txt`. `octave/dial_flatball.m` restores the flat ball. Its log is `data/dial_flatball.txt`.
 
 ## Limits
 
-The metric is a coast at constant speed. Acceleration is not in the run. The test is Warp Factory's Eulerian energy conditions, sampled on the solver's observer set. On the 166.8 m grid the 0.10c mix is under the clean bar. On the 83.4 m grid the campaign bar fails on four origin samples, and the shift-off run fails on those same samples. A stricter all-observer standard published later has not been run on this shell. 0.11c on this join fails in the outer wall.
+The metric is a coast at constant speed. Acceleration is not in the run. The test is Warp Factory's Eulerian energy conditions, sampled on the solver's observer set. On the 166.8 m grid the 0.10c mix is under the clean bar. On the 83.4 m grid the raw difference is over the bar on four samples inside the flat ball, and the restored continuum value is under the bar. The 166.8 m grid's tight cell at 118 m sits outside that ball, where the smoothed density has already turned on, and its stencil residual remains under the bar. A stricter all-observer standard published later has not been run on this shell. 0.11c on this join fails in the outer wall, outside the flat ball.
 
 ## License
 

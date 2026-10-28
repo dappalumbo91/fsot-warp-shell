@@ -21,6 +21,7 @@ SHELL = ROOT / "data" / "shell_env.txt"
 LOG = ROOT / "data" / "dial_mix.txt"
 FINE = ROOT / "data" / "dial_mix_fine.txt"
 CENTER = ROOT / "data" / "dial_center.txt"
+FLAT = ROOT / "data" / "dial_flatball.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -156,6 +157,19 @@ def center_log() -> None:
     check("166.8 m shift off origin sample", "-7.515213e-04" in text and "== center N=160 v=0.00" in text, "dial_center.txt")
 
 
+def flat_log() -> None:
+    text = FLAT.read_text(encoding="utf-8")
+    check("flat ball finished", "flat ball done" in text, "dial_flatball.txt")
+    check(
+        "83.4 m 0.10c restored is clean",
+        "null=1.970669e-07 weak=4.005914e-07 strong=1.970669e-07 dom=5.506012e-07" in text
+        and "CLEAN" in text,
+        "dial_flatball.txt",
+    )
+    check("166.8 m restores no cells", "== raw N=160 v=0.10  minWeak=-7.886762e-04 nFlat=0" in text, "dial_flatball.txt")
+    check("83.4 m restores four cells", "== raw N=320 v=0.10  minWeak=-1.476078e-03 nFlat=4" in text, "dial_flatball.txt")
+
+
 def main() -> int:
     algebra()
     shell_file()
@@ -163,6 +177,7 @@ def main() -> int:
     log()
     fine_log()
     center_log()
+    flat_log()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0
 
