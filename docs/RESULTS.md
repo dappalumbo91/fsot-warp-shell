@@ -76,7 +76,7 @@ Logs `data/dial_mass_down.txt` and `data/dial_mass_down_16.txt`, dated 2026-10-2
 | 1/5 | 2.693×10²⁷ kg | 0.400 | clean, dominant 1.54×10⁻⁵, energy 2.936×10²⁷ kg | fail, dominant 0.422 at 15.72 m | 12.65 m, 1.703×10²⁷ kg |
 | 1/6 | 2.244×10²⁷ kg | 0.333 | fail, dominant 0.215 at 15.76 m | not scored | 11.55 m, 1.296×10²⁷ kg |
 
-At compactness 1/5 and 0.04c the outer shoulder still has dominant margin +0.209 at 15.70 m, flux −0.465. At compactness 1/6 that shoulder is −0.209, flux −0.553, and the inner shoulder at 9.78 m is −0.131. One fifth is the light clean step on this wall. The 0.10c machine remains compactness 1/2.
+At compactness 1/5 and 0.04c the outer shoulder still has dominant margin +0.209 at 15.70 m, flux −0.465. At compactness 1/6 that shoulder is −0.209, flux −0.553, and the inner shoulder at 9.78 m is −0.131. One fifth is the light clean flat wall. The one-sixth mass is clean at 0.04c with the placement in the next sections. The 0.10c machine remains compactness 1/2. The 11.55 m resize on the failed flat row is the uniform density match. It is not a passing shell.
 
 ## One-sixth mass moved onto the slope
 
@@ -90,6 +90,32 @@ Same total mass, 2.244×10²⁷ kg, same mix, same outer radius. The flat wall f
 | Larger of wall and slope | 0.504 | +0.149 | −0.143 | fail, dominant 0.197 at 16.15 m |
 
 The slope placement clears both shoulders. At the inner edge the shift is still 0.995 and the density is 0.093 of peak, under a flux of 0.118. Putting wall density back under that edge, either by adding it to the slope or by taking the larger of the two profiles, reopens the outer shoulder before the edge reaches zero. Logs `data/dial_sixth_push.txt`, `data/dial_sixth_cover.txt`, and `data/dial_sixth_max.txt`.
+
+## One-sixth mass across the bend window
+
+Same total mass, 2.244×10²⁷ kg, same mix, same 20 m wall. Dated 2026-10-29.
+
+The slope placement already carries a side notch at 16.5 m, dominant 0.031, 16 cells. The foot at 2.96 m is worse, 0.081, so the notch was not the reported cell. Joining the wall to the slope and smoothing afterward clears the foot and deepens the notch to 0.042. Log `data/dial_sixth_band.txt`.
+
+Restoring the uniform wall only inside the crossing, and paying the excess from the negative-curvature side, clears the foot. The dominant ratio inside 8 m is 0. The notch remains at 16.67 m, dominant 0.028, the same absolute size as on the slope. Crossing 8.01 m, curvature flip 12.97 m, payment scale 0.952, peak density 0.649 of the half-compact wall. Log `data/dial_sixth_inner.txt`.
+
+Holding the slope up to the straight chord from the steepest point, 12.97 m, out to the shell face clears the notch. At 16.5 m the dominant margin is +0.083. The steepest slope then fails, dominant 0.216 at 12.96 m, 38° off the boost. The chord at 19 m is 23 times the real slope, and the mass fraction outside 18 m rises from 0.071 to 0.146. Log `data/dial_sixth_chord.txt`.
+
+The strongest bend is at 15.71 m. Curvature takes 2.74 m to climb from the steepest slope to that bend. The chord in the clean run covers only that same distance on the far side, out to 18.45 m, and the slope is followed again after that. The foot stays the wall. Payment scale 0.945. Peak density 1.264×10²³ kg/m³, 0.627 of the half-compact wall. Mass fractions: 0.056 inside 8 m, 0.322 from 8 m to 13 m, 0.538 from 13 m to 18 m, 0.084 outside 18 m.
+
+| | Bend window |
+| --- | ---: |
+| Null | 6.79×10⁻⁵ at 23.92 m |
+| Strong | 1.89×10⁻⁴ at 23.54 m |
+| Dominant | 1.61×10⁻⁴ at 23.65 m |
+| Serious fraction | 0 |
+| Energy | 2.379×10²⁷ kg |
+| Shift | 0.04 |
+| Verdict | clean |
+
+The side ray is positive through the wall: +0.055 at 2.85 m, +0.210 at 9.78 m, +0.454 at 12 m, +0.165 at 15.70 m, +0.071 at 17.52 m. At 16.5 m the side minimum is +0.042. Log `data/dial_sixth_bend.txt`.
+
+At this fixed 20 m radius the shell is 1.182 Jupiter masses. The uniform one-fifth wall at the same radius is 1.419 Jupiter masses. The peak here is 0.627 of the half-compact density, above the uniform one-fifth density and under that ceiling. Resizing this shape so the peak equals the ceiling, same profile, gives an outer radius of 15.84 m and a mass of 1.777×10²⁷ kg, 0.936 Jupiter. That is a scale of the scored shell, not a second grid. The uniform one-fifth wall, resized so its own density equals the ceiling, remains 12.65 m and 0.897 Jupiter. The 0.10c shell remains compactness 1/2.
 
 ## Audit of the 20 m shell
 

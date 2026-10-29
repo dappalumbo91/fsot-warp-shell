@@ -1,0 +1,50 @@
+sixth bend: chord across the curvature window, wall in the foot. R2=20.000 R1=2.853 v=0.04
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+M=2.244318e+27 (1.182 Mjup) rhoUni=6.716892e+22 rhoHalf=2.015068e+23
+mix max |dS|=1.32691e-01 /m at r=12.967
+strongest bend r=15.711 d2S=3.82436e-02  window end r=18.454 |dS|=3.06264e-03
+r  |dS|  chord  weight/|dS|
+  9.78  8.17479e-02  2.07981e-01  1.000
+ 12.00  1.26107e-01  1.55537e-01  1.000
+ 14.00  1.23439e-01  1.08291e-01  1.000
+ 15.70  7.07156e-02  6.81311e-02  1.000
+ 16.67  3.58721e-02  4.52165e-02  1.260
+ 17.52  1.43627e-02  2.51367e-02  1.750
+ 19.00  8.19107e-04 -9.82581e-03  1.000
+rCross=8.165 rFlip=12.968 excess/M=0.0184 pay/M=0.3327
+payment scale=0.9446 M(end)/M before trim=0.999998
+inner mass peak rho=1.263867e+23 at r=12.968  peak/rhoHalf=0.627 peak/rhoUni=1.882
+r  rho/rhoHalf  rho/rhoUni
+  2.85  0.1594  0.4783
+  9.78  0.4424  1.3272
+ 12.00  0.5859  1.7577
+ 15.70  0.4124  1.2373
+ 17.52  0.2015  0.6045
+mass fraction 0.0-8.0 m = 0.056
+mass fraction 8.0-13.0 m = 0.322
+mass fraction 13.0-18.0 m = 0.538
+mass fraction 18.0-27.0 m = 0.084
+M(end)/M=1.0000 min(1-Rs/r)=0.8302
+null worst/peak=6.785e-05 at r=23.917 off=86.2 T01=-0.0000 T11=-0.0002
+weak worst/peak=6.785e-05 at r=23.917 off=86.2 T01=-0.0000 T11=-0.0002
+strong worst/peak=1.889e-04 at r=23.542 off=83.9 T01=-0.0000 T11=-0.0003
+dominant worst/peak=1.605e-04 at r=23.647 off=13.9 T01=-0.0000 T11=0.0000
+E=2.3794e+27 null=6.785e-05 weak=6.785e-05 strong=1.889e-04 dom=1.605e-04 ser=0.0000 shift=4.000e-02 CLEAN 12.7s
+r rho T01 dom
+  2.85  0.2212  0.1033  0.0547
+  9.78  0.6132  0.2388  0.2100
+ 12.00  0.8104  0.1547  0.4539
+ 15.70  0.5720 -0.2454  0.1653
+ 17.52  0.2800 -0.1233  0.0714
+foot r<8 dom worst/peak=0.000e+00 outer r>10 dom worst/peak=1.605e-04
+r dom/pk ang rho/pk T01/pk nneg
+ 14.00  4.5837e-01  51.5  0.7823 -0.0318 0
+ 14.50  3.6491e-01  76.6  0.7217 -0.1706 0
+ 15.00  2.5282e-01  87.4  0.6453 -0.2297 0
+ 15.50  1.5961e-01  85.9  0.5682 -0.2445 0
+ 16.00  8.1875e-02  84.4  0.4862 -0.2328 0
+ 16.50  4.1750e-02  86.1  0.4172 -0.2076 0
+ 17.00  4.6936e-02  81.4  0.3930 -0.1916 0
+ 17.50  6.5889e-02  80.2  0.3119 -0.1414 0
+ 18.00  8.1890e-02  89.3  0.2216 -0.0810 0
+sixth bend done

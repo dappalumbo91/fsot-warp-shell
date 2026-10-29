@@ -1,0 +1,49 @@
+sixth chord: slope held to the chord on the positive curvature, wall in the foot. R2=20.000 R1=2.853 v=0.04
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+M=2.244318e+27 (1.182 Mjup) rhoUni=6.716892e+22 rhoHalf=2.015068e+23
+mix max |dS|=1.32691e-01 /m at r=12.967  |dS|(R2)=1.29821e-05
+r  |dS|  chord  weight/|dS|
+  9.78  8.17479e-02  1.92817e-01  1.000
+ 12.00  1.26107e-01  1.50936e-01  1.000
+ 14.00  1.23439e-01  1.13205e-01  1.000
+ 15.70  7.07156e-02  8.11340e-02  1.147
+ 16.67  3.58721e-02  6.28346e-02  1.752
+ 17.52  1.43627e-02  4.67990e-02  3.258
+ 19.00  8.19107e-04  1.88783e-02  23.047
+rCross=8.778 rFlip=12.968 excess/M=0.0252 pay/M=0.2730
+payment scale=0.9076 M(end)/M before trim=0.999997
+inner mass peak rho=1.105821e+23 at r=12.968  peak/rhoHalf=0.549 peak/rhoUni=1.646
+r  rho/rhoHalf  rho/rhoUni
+  2.85  0.1594  0.4783
+  9.78  0.3668  1.1004
+ 12.00  0.4880  1.4639
+ 15.70  0.4030  1.2090
+ 17.52  0.2415  0.7244
+mass fraction 0.0-8.0 m = 0.056
+mass fraction 8.0-13.0 m = 0.271
+mass fraction 13.0-18.0 m = 0.526
+mass fraction 18.0-27.0 m = 0.146
+M(end)/M=1.0000 min(1-Rs/r)=0.8392
+null worst/peak=1.916e-02 at r=9.051 off=61.5 T01=0.2071 T11=0.0052
+weak worst/peak=1.916e-02 at r=9.051 off=61.5 T01=0.2071 T11=0.0052
+strong worst/peak=1.916e-02 at r=9.051 off=61.5 T01=0.2071 T11=0.0052
+dominant worst/peak=2.163e-01 at r=12.957 off=37.9 T01=0.1294 T11=0.0019
+E=2.3731e+27 null=1.916e-02 weak=1.916e-02 strong=1.916e-02 dom=2.163e-01 ser=0.0039 shift=4.000e-02 FAIL 12.2s
+r rho T01 dom
+  2.85  0.2304  0.1070  0.0553
+  9.78  0.5294  0.2512  0.0944
+ 12.00  0.7027  0.1667  0.3639
+ 15.70  0.5821 -0.2598  0.1505
+ 17.52  0.3494 -0.1305  0.1276
+foot r<8 dom worst/peak=0.000e+00 outer r>10 dom worst/peak=2.163e-01
+r dom/pk ang rho/pk T01/pk nneg
+ 14.00  4.1899e-01  19.6  0.7359  0.1009 0
+ 14.50  3.3317e-01  76.6  0.6913 -0.1789 0
+ 15.00  2.2831e-01  87.4  0.6362 -0.2425 0
+ 15.50  1.4508e-01  85.9  0.5794 -0.2588 0
+ 16.00  9.0271e-02  84.4  0.5174 -0.2468 0
+ 16.50  8.3438e-02  87.6  0.4667 -0.2229 0
+ 17.00  9.4643e-02  81.4  0.4442 -0.2031 0
+ 17.50  1.2094e-01  80.2  0.3770 -0.1497 0
+ 18.00  1.3760e-01  79.0  0.3115 -0.0945 0
+sixth chord done
