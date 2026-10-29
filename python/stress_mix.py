@@ -27,6 +27,7 @@ FLAT11 = ROOT / "data" / "dial_flatball_11_fine.txt"
 SIZE = ROOT / "data" / "dial_fuchs_size.txt"
 CABIN = ROOT / "data" / "dial_cabin_gap.txt"
 AUDIT = ROOT / "data" / "dial_audit_bar.txt"
+VACUUM = ROOT / "data" / "dial_cabin_vacuum.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -267,6 +268,26 @@ def audit_log() -> None:
     )
 
 
+def vacuum_log() -> None:
+    text = VACUUM.read_text(encoding="utf-8")
+    check("cabin vacuum finished", "cabin vacuum done" in text, "dial_cabin_vacuum.txt")
+    check(
+        "FSOT wall density stays under 1 percent out to 0.42 m",
+        "usable cabin, rho<1% peak and S>0.999, out to r=0.4169 m" in text,
+        "dial_cabin_vacuum.txt",
+    )
+    check(
+        "their cabin stays under 1 percent out to 5.72 m",
+        "usable cabin, rho<1% peak and S>0.999, out to r=5.7242 m" in text,
+        "dial_cabin_vacuum.txt",
+    )
+    check(
+        "mass smooth ends at 26.57 m",
+        "last rho>0 at r=26.5724 m" in text,
+        "dial_cabin_vacuum.txt",
+    )
+
+
 def shift_bar() -> None:
     """Every stored verdict has to carry the speed it claims."""
     import re
@@ -328,6 +349,7 @@ def main() -> int:
     size_log()
     cabin_log()
     audit_log()
+    vacuum_log()
     shift_bar()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0

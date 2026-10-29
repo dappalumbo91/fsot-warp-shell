@@ -35,6 +35,8 @@ That file is `data/shell_env.txt`:
 
 The first number in that file, 4.655124×10²⁴ kg, is a 110 m wall at the same density and the same wall fraction. The scorers read the radii and the mass. They do not use the first number.
 
+On the 20 m grid the builder's mass smooth is four passes of 3.29 m, and the shift smooth is two passes of 1.84 m. `data/dial_cabin_vacuum.txt` records where that leaves the density and the shift. The unsmoothed inner radius is not the radius where the density is still zero.
+
 Warp Factory integrates with `c = 2.99792458e8` and `G = 6.67430e-11`. Those constants put the same stored mass at Rs/R2 = 0.500021.
 
 ## The shift

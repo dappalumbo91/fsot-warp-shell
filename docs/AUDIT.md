@@ -28,7 +28,13 @@ Every stored CLEAN and FAIL line has its shift within 1.5×10⁻³ of the reques
 | Compactness 1/2, 0.10c | 8.2868×10²⁷ kg | 1.92×10⁻⁵ | exterior, 26.47 m | clean |
 | Compactness 1/3, shift off | 5.1495×10²⁷ kg | 1.71×10⁻⁵ | exterior, 26.47 m | clean |
 
-The 0.10c line matches `data/dial_fuchs_size.txt` on energy, the four ratios, the serious fraction, the shift, and the cell that holds the dominant ratio. The wall-clock seconds differ. With the shift off, the same matter is already under the bar. Turning the shift on at 0.10c moves the energy from 8.3144×10²⁷ kg to 8.2868×10²⁷ kg and leaves the violation in the exterior skirt.
+The 0.10c line matches `data/dial_fuchs_size.txt` on energy, the four ratios, the serious fraction, the shift, and the cell that holds the dominant ratio. The wall-clock seconds differ. With the shift off, the same matter is already under the bar. Turning the shift on at 0.10c moves the energy from 8.3144×10²⁷ kg to 8.2868×10²⁷ kg and leaves the violation at 26.47 m. The smoothed density ends at 26.57 m, so that cell is the tip of the mass smooth.
+
+## The cabin after the mass smooth
+
+`data/dial_cabin_vacuum.txt` uses the builder's four-pass mass smooth and does not score the energy conditions. On the 20 m grid the mass window is 3.29 m and the shift window is 1.84 m.
+
+On the FSOT wall the density is zero out to 0.18 m and under 1% of the wall out to 0.42 m. At 2.85 m the density is 49% of the wall and the shift is 0.994. On their cabin the density is zero out to 3.43 m and under 1% out to 5.72 m. At 9.78 m the density is 46% of the wall and the shift is 0.985. Lowering the compactness does not move those radii. The density ratio is set by the smooth, and the mass only sets the height of the wall.
 
 That is a confirmation of the record. It is not a lighter shell and not a new speed. The 0.11c failure at compactness 1/2, dominant ratio 0.177 in the outer wall, is unchanged. Their 10 m cabin remains clean at 0.04c and over the bar at 0.06c.
 
