@@ -24,7 +24,7 @@ if exist(outDir, 'dir') ~= 7, mkdir(outDir); end
 fid = fopen(fullfile(outDir, 'dial_mix.txt'), 'w');
 out = @(varargin) [fprintf(varargin{:}); fprintf(fid, varargin{:})];
 out('Rbig=%.3f R1big=%.3f mbig=%.6e\n', Rbig, R1big, mbig);
-out('clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak\n');
+out('clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed\n');
 
 N = 160;
 R2 = Rbig; R1 = R1big; m = mbig; Lbox = 1.36 * Rbig;
@@ -127,7 +127,7 @@ for n = 1:size(rows, 1)
           labels{k}, worst(k), rc, reg, shx(ii, jj), polar(ii, jj) * 180 / pi, rhoE(ii, jj));
     end
     shift = max(abs(Mt.tensor{1, 2}(:)));
-    clean = all(worst < 1e-3) && all(serious == 0) && Etot > 0 && isfinite(pk);
+    clean = all(worst < 1e-3) && all(serious == 0) && Etot > 0 && isfinite(pk) && abs(shift - v) < 1e-3;
     if clean, label = 'CLEAN'; else, label = 'FAIL'; end
     out('E=%.4e nec=%.3e dec=%.3e ser=%.4f shift=%.3e %s %.1fs\n', ...
         Etot/c^2, worst(1), worst(4), max(serious), shift, label, toc);

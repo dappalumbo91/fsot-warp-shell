@@ -26,6 +26,7 @@ FLAT = ROOT / "data" / "dial_flatball.txt"
 FLAT11 = ROOT / "data" / "dial_flatball_11_fine.txt"
 SIZE = ROOT / "data" / "dial_fuchs_size.txt"
 CABIN = ROOT / "data" / "dial_cabin_gap.txt"
+AUDIT = ROOT / "data" / "dial_audit_bar.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -225,9 +226,99 @@ def cabin_log() -> None:
     )
 
 
+def _summary_line(text: str, marker: str) -> str:
+    lines = text.splitlines()
+    start = next(i for i, line in enumerate(lines) if line.startswith(f"== {marker}"))
+    for line in lines[start + 1 :]:
+        if line.startswith("E=") or line.startswith("null="):
+            return line
+        if line.startswith("== "):
+            break
+    raise RuntimeError(marker)
+
+
+def _physics(line: str) -> str:
+    import re
+
+    return re.sub(r"\s+[0-9.]+s$", "", line)
+
+
+def audit_log() -> None:
+    text = AUDIT.read_text(encoding="utf-8")
+    check("audit bar finished", "audit bar done" in text, "dial_audit_bar.txt")
+    parked_half = _summary_line(text, "C=0.500 v=0.00")
+    parked_third = _summary_line(text, "C=0.333 v=0.00")
+    live = _summary_line(text, "C=0.500 v=0.10")
+    stored = _summary_line(SIZE.read_text(encoding="utf-8"), "C=0.500 v=0.10")
+    check(
+        "parked compactness 1/2 is clean at v=0",
+        "CLEAN" in parked_half and "shift=0.000e+00" in parked_half,
+        parked_half,
+    )
+    check(
+        "parked compactness 1/3 is clean at v=0",
+        "CLEAN" in parked_third and "shift=0.000e+00" in parked_third,
+        parked_third,
+    )
+    check(
+        "fresh 0.10c line matches the stored score",
+        _physics(live) == _physics(stored),
+        _physics(live),
+    )
+
+
+def shift_bar() -> None:
+    """Every stored verdict has to carry the speed it claims."""
+    import re
+
+    n = 0
+    for path in sorted((ROOT / "data").glob("*.txt")):
+        if path.name == "shell_env.txt":
+            continue
+        v = None
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.startswith("== ") and "v=" in line:
+                v = float(re.search(r"v=([0-9.]+)", line).group(1))
+            if "shift=" not in line or ("CLEAN" not in line and "FAIL" not in line):
+                continue
+            same = re.search(r"v=([0-9.]+)", line)
+            speed = float(same.group(1)) if same else v
+            shift = float(re.search(r"shift=([0-9.eE+-]+)", line).group(1))
+            n += 1
+            if speed is None or abs(shift - speed) > 1.5e-3:
+                check("shift matches speed", False, f"{path.name}: shift={shift} v={speed}")
+                return
+            if "CLEAN" in line:
+                ser = re.search(r"ser=([0-9.eE+-]+)", line)
+                if ser and float(ser.group(1)) != 0.0:
+                    check("clean serious fraction", False, path.name)
+                    return
+    check("stored shift matches the requested speed", True, f"{n} verdicts")
+
+
+def shell_fields() -> None:
+    """Field 1 is the 110 m condensate wall. The scorer uses fields 2–4."""
+    m110, r2, r1, mass = (float(x) for x in SHELL.read_text(encoding="utf-8").split())
+    vol = 4.0 / 3.0 * math.pi * (r2**3 - r1**3)
+    rho = mass / vol
+    r_small = 110.0
+    r1_small = r_small * (1.0 - ELL_BAKED)
+    vol110 = 4.0 / 3.0 * math.pi * (r_small**3 - r1_small**3)
+    check(
+        "field 1 is the 110 m wall at this density",
+        abs(m110 - rho * vol110) / abs(m110) < 1e-9,
+        f"m110={m110:.6e}",
+    )
+    e_big = 4.0651e30
+    e_20 = 8.2868e27
+    m_20 = 0.5 * 20.0 * C_WF * C_WF / (2.0 * G_WF)
+    check("energy over mass agrees across scales", abs((e_big / mass) - (e_20 / m_20)) < 5e-3, f"{e_big / mass:.4f} and {e_20 / m_20:.4f}")
+
+
 def main() -> int:
     algebra()
     shell_file()
+    shell_fields()
     pin()
     log()
     fine_log()
@@ -236,6 +327,8 @@ def main() -> int:
     flat11_log()
     size_log()
     cabin_log()
+    audit_log()
+    shift_bar()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0
 

@@ -1,0 +1,25 @@
+audit bar. ell=0.8573494832025231 R2=20.000 R1=2.853 N=120 h=0.45455
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+
+-- C=0.500 m=6.732955e+27 S(0)=1.00000 S(R2)=0.00000
+== C=0.500 v=0.00 max|g_tx|=0.0000
+null worst/peak=1.081e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+weak worst/peak=2.185e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=4.5 deg
+strong worst/peak=1.081e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+dominant worst/peak=1.947e-05 at r=26.467 m (exterior) g_tx=-0.0000 off-axis=69.4 deg
+E=8.3144e+27 null=1.081e-05 weak=2.185e-05 strong=1.081e-05 dom=1.947e-05 ser=0.0000 shift=0.000e+00 CLEAN 13.6s
+== C=0.500 v=0.10 max|g_tx|=0.1000
+null worst/peak=1.067e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+weak worst/peak=2.158e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=4.5 deg
+strong worst/peak=1.067e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+dominant worst/peak=1.923e-05 at r=26.467 m (exterior) g_tx=-0.0000 off-axis=69.4 deg
+E=8.2868e+27 null=1.067e-05 weak=2.158e-05 strong=1.067e-05 dom=1.923e-05 ser=0.0000 shift=1.000e-01 CLEAN 13.1s
+
+-- C=0.333 m=4.488636e+27 S(0)=1.00000 S(R2)=0.00000
+== C=0.333 v=0.00 max|g_tx|=0.0000
+null worst/peak=9.363e-06 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+weak worst/peak=1.895e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=4.5 deg
+strong worst/peak=9.363e-06 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg
+dominant worst/peak=1.705e-05 at r=26.467 m (exterior) g_tx=-0.0000 off-axis=69.4 deg
+E=5.1495e+27 null=9.363e-06 weak=1.895e-05 strong=9.363e-06 dom=1.705e-05 ser=0.0000 shift=0.000e+00 CLEAN 12.7s
+audit bar done

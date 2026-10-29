@@ -114,7 +114,7 @@ for N = [160, 320]
       serious = mean(nul(:) < -1e-3) ;
       serious = max([mean(nul(:) < -1e-3), mean(wk(:) < -1e-3), mean(st(:) < -1e-3), mean(dom(:) < -1e-3)]);
       shift = max(abs(bx(:)));
-      clean = all(worst < 1e-3) && serious == 0 && Etot > 0 && isfinite(pk);
+      clean = all(worst < 1e-3) && serious == 0 && Etot > 0 && isfinite(pk) && abs(shift - v) < 1e-3;
       if clean, label = 'CLEAN'; else, label = 'FAIL'; end
       out('== flat N=%d v=%.2f h=%.3f pk=%.6e nFlat=%d\n', N, v, h, pk, sum(flat(:)));
       out('null=%.6e weak=%.6e strong=%.6e dom=%.6e ser=%.4e E=%.4e shift=%.3e %s %.1fs\n', ...

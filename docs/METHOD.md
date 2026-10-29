@@ -33,6 +33,8 @@ That file is `data/shell_env.txt`:
 | Mass | 3.303043×10³⁰ kg |
 | Unsmoothed density | 8.373888×10¹⁷ kg/m³ |
 
+The first number in that file, 4.655124×10²⁴ kg, is a 110 m wall at the same density and the same wall fraction. The scorers read the radii and the mass. They do not use the first number.
+
 Warp Factory integrates with `c = 2.99792458e8` and `G = 6.67430e-11`. Those constants put the same stored mass at Rs/R2 = 0.500021.
 
 ## The shift
@@ -63,7 +65,7 @@ The metric shift is `g_tx = -v S(r)` along the boost direction. `v` is the reque
 
 ## The score
 
-Warp Factory builds the comoving warp-shell metric at this mass and these radii, then replaces the shift with the mix. The Eulerian null, weak, strong, and dominant maps are read on the transverse grid. A point is clean when all four worst/peak ratios are under `1e-3`, the serious fraction is 0, the integrated energy is positive, and the peak shift equals the requested speed.
+Warp Factory builds the comoving warp-shell metric at this mass and these radii, then replaces the shift with the mix. The Eulerian null, weak, strong, and dominant maps are read on the transverse grid. A point is clean when all four worst/peak ratios are under `1e-3`, the serious fraction is 0, the integrated energy is positive, and the peak shift equals the requested speed. `dial_mix.m`, `dial_mix_fine.m`, and `dial_flatball.m` apply that shift test in the clean flag, the same way `dial_fuchs_size.m` and `dial_cabin_gap.m` already did. The stored logs already satisfy it.
 
 The scored grid at the clean point has `N = 160` and spacing `h = 166.790 m`. The raw Cartesian difference at `N = 320` (`h = 83.395 m`) puts the weak ratio at the central sample at 1.476×10⁻³. That log is `data/dial_mix_fine.txt`. The restored score is `data/dial_flatball.txt`. The same restoration at 0.11c is `data/dial_flatball_11.txt` on the 166.8 m grid and `data/dial_flatball_11_fine.txt` on the 83.4 m grid. Both fail in the outer wall.
 
@@ -73,4 +75,4 @@ The smoothed shell density is exactly zero for r < 87.55 m, and `B = 1` on that 
 
 ## What was varied
 
-Same body, same mass, same smoother. The ordinary compact sigmoid is clean at 0.075c and fails at 0.08c on the side of the wall. The blend `s(1 + p - s)` is clean through 0.095c and fails at 0.10c on the outer limb. The mix above is clean at 0.095c and at 0.10c on the 166.8 m grid. The same mix at 0.11c fails in the outer wall. Later joins that tried to hand the tail to the sigmoid also failed, and they lost the 0.10c pass with them. The pass remains the mix at 0.10c. On the 83.4 m grid the raw center sample is over the bar, and the flat-ball restoration puts that same 0.10c metric under the bar. The 0.11c failure in the outer wall is the same break on that finer grid. The same join at an outer radius of 20 m is `data/dial_fuchs_size.txt`. Compactness 1/3 there is the published mass and is clean at 0.06c. Compactness 1/2 is 1.5 times that mass and is clean at 0.10c. Their cabin, half the outer radius, is `data/dial_cabin_gap.txt`: clean at 0.04c when the compactness is 1/2, and over the bar at 0.06c.
+Same body, same mass, same smoother. The ordinary compact sigmoid is clean at 0.075c and fails at 0.08c on the side of the wall. The blend `s(1 + p - s)` is clean through 0.095c and fails at 0.10c on the outer limb. The mix above is clean at 0.095c and at 0.10c on the 166.8 m grid. The same mix at 0.11c fails in the outer wall. Later joins that tried to hand the tail to the sigmoid also failed, and they lost the 0.10c pass with them. The pass remains the mix at 0.10c. On the 83.4 m grid the raw center sample is over the bar, and the flat-ball restoration puts that same 0.10c metric under the bar. The 0.11c failure in the outer wall is the same break on that finer grid. The same join at an outer radius of 20 m is `data/dial_fuchs_size.txt`. Compactness 1/3 there is the published mass and is clean at 0.06c. Compactness 1/2 is 1.5 times that mass and is clean at 0.10c. Their cabin, half the outer radius, is `data/dial_cabin_gap.txt`: clean at 0.04c when the compactness is 1/2, and over the bar at 0.06c. `data/dial_audit_bar.txt` repeats the 0.10c line and scores the same shell with the shift off. Both parked cases are clean. The write-up is [AUDIT.md](AUDIT.md).

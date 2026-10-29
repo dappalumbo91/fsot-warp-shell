@@ -298,6 +298,46 @@ def fig_flatball():
     save(fig, "flatball")
 
 
+def fig_audit():
+    import numpy as np
+
+    cases = [
+        ("Parked\ncompactness 1/2", _summary_dom(DATA / "dial_audit_bar.txt", "C=0.500 v=0.00")),
+        ("0.10c\ncompactness 1/2", _summary_dom(DATA / "dial_audit_bar.txt", "C=0.500 v=0.10")),
+        ("Parked\ncompactness 1/3", _summary_dom(DATA / "dial_audit_bar.txt", "C=0.333 v=0.00")),
+        ("0.06c\ntheir mass", _summary_dom(DATA / "dial_fuchs_size.txt", "C=0.333 v=0.06")),
+        ("0.11c\ncompactness 1/2", _summary_dom(DATA / "dial_fuchs_size.txt", "C=0.500 v=0.11")),
+        ("Their cabin\n0.04c", _summary_dom(DATA / "dial_cabin_gap.txt", "fuchs v=0.04")),
+        ("Their cabin\n0.06c", _summary_dom(DATA / "dial_cabin_gap.txt", "fuchs v=0.06")),
+    ]
+    fig, ax = plt.subplots(figsize=(9.6, 4.8), layout="constrained")
+    x = np.arange(len(cases))
+    vals = [c[1][0] for c in cases]
+    colors = [PASS if c[1][1] else FAIL for c in cases]
+    ax.bar(x, vals, color=colors, width=0.72)
+    ax.axhline(1e-3, color=INK, ls="--", lw=1, label="Clean bar 1e-3")
+    ax.set_yscale("log")
+    ax.set_xticks(x)
+    ax.set_xticklabels([c[0] for c in cases], fontsize=8)
+    ax.set_ylabel("Dominant violation / peak |energy density|")
+    ax.set_ylim(1e-6, 1)
+    ax.set_title("20 m shell under the conditions already scored.\nA fresh run reproduced the 0.10c line.")
+    ax.legend(frameon=False)
+    save(fig, "audit_bar")
+
+
+def _summary_dom(path: Path, marker: str):
+    lines = path.read_text(encoding="utf-8").splitlines()
+    start = next(i for i, line in enumerate(lines) if line.startswith(f"== {marker}"))
+    for line in lines[start + 1 :]:
+        if line.startswith("E=") or line.startswith("null="):
+            dom = float(line.split("dom=")[1].split()[0])
+            return dom, "CLEAN" in line
+        if line.startswith("== "):
+            break
+    raise RuntimeError(f"no summary after {marker} in {path.name}")
+
+
 def fig_geometry(r1, r2):
     fig, ax = plt.subplots(figsize=(8.6, 2.8))
     ax.barh(0, r2 / 1000, color="#1f4e79", height=0.45, label="Wall")
@@ -326,6 +366,7 @@ def main():
     fig_flatball()
     fig_limb()
     fig_geometry(r1, r2)
+    fig_audit()
     compact = 2 * G_WF * mass / (C_WF * C_WF * r2)
     print(f"R1={r1:.3f} R2={r2:.3f} M={mass:.6e}")
     print(f"rho={rho:.6e} fuchs_rho={frho:.6e} density_ratio={frho / rho:.6e}")
