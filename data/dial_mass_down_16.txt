@@ -1,0 +1,18 @@
+mass down, fixed R2=20.000 R1=2.853. Density falls with compactness.
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+C=1/2 reference: M=6.732955e+27 (3.547 Mjup) rho=2.015068e+23
+
+-- C=0.167 M=2.244318e+27 (1.182 Mjup) rho=6.716892e+22 rho/rhoHalf=0.333
+same density as the C=1/2 wall: R2=11.547 M=1.295758e+27 (0.683 Mjup)
+== C=0.167 v=0.04
+null worst/peak=4.774e-02 at r=15.762 off=84.2 T01=-0.5490 T11=0.0234
+weak worst/peak=4.774e-02 at r=15.762 off=84.2 T01=-0.5490 T11=0.0234
+strong worst/peak=4.774e-02 at r=15.762 off=84.2 T01=-0.5490 T11=0.0234
+dominant worst/peak=2.148e-01 at r=15.762 off=84.2 T01=-0.5490 T11=0.0234
+E=2.4183e+27 null=4.774e-02 weak=4.774e-02 strong=4.774e-02 dom=2.148e-01 ser=0.0149 shift=4.000e-02 FAIL 15.3s
+r rho T01 dom
+  9.78  0.9963  0.5191 -0.1313
+ 12.00  0.9929  0.3605  0.3778
+ 15.70  0.9876 -0.5534 -0.2086
+ 17.52  0.8991 -0.2803  0.3945
+mass down done

@@ -66,6 +66,31 @@ Log `data/dial_fuchs_size.txt`. Outer radius 20 m. The FSOT wall has inner radiu
 
 Compactness 1/3 is the published mass. The clean speed there is 0.06c. Compactness 1/2 is 1.5 times that mass, about 3.55 Jupiter masses, and it is clean at 0.10c. The wall volume is 3.34×10⁴ m³, so the density is 2.02×10²³ kg/m³, about 1.3 times the published density and about 2.4×10⁵ times the condensate. The 0.11c break is 0.785 of the radius, the same fraction as 7.72 km on the condensate body, and the dominant ratio is 0.177 on both.
 
+## Lighter compactness, same wall
+
+Logs `data/dial_mass_down.txt` and `data/dial_mass_down_16.txt`, dated 2026-10-29. Same mix, same builder lapse, same 20 m FSOT wall. The reference row is the compactness-1/2 shell above: mass 6.733×10²⁷ kg, density 2.015×10²³ kg/m³. Density falls in proportion to compactness. The smaller radius in the last column is that same compactness resized so the density matches the reference. It is not a second grid score. The ratios do not depend on the radius.
+
+| Compactness | Mass at 20 m | Density / reference | 0.04c | 0.06c | Same density as the reference |
+| --- | ---: | ---: | --- | --- | --- |
+| 1/4 | 3.366×10²⁷ kg | 0.500 | clean, dominant 1.60×10⁻⁵, energy 3.737×10²⁷ kg | fail, dominant 0.224 at 15.72 m | 14.14 m, 2.380×10²⁷ kg |
+| 1/5 | 2.693×10²⁷ kg | 0.400 | clean, dominant 1.54×10⁻⁵, energy 2.936×10²⁷ kg | fail, dominant 0.422 at 15.72 m | 12.65 m, 1.703×10²⁷ kg |
+| 1/6 | 2.244×10²⁷ kg | 0.333 | fail, dominant 0.215 at 15.76 m | not scored | 11.55 m, 1.296×10²⁷ kg |
+
+At compactness 1/5 and 0.04c the outer shoulder still has dominant margin +0.209 at 15.70 m, flux −0.465. At compactness 1/6 that shoulder is −0.209, flux −0.553, and the inner shoulder at 9.78 m is −0.131. One fifth is the light clean step on this wall. The 0.10c machine remains compactness 1/2.
+
+## One-sixth mass moved onto the slope
+
+Same total mass, 2.244×10²⁷ kg, same mix, same outer radius. The flat wall fails where the shift slope is steep, so the mass was placed on that slope and returned to the same total. Peak density stays under the compactness-1/2 wall.
+
+| Placement | Peak density / reference | 9.78 m | 15.70 m | Verdict |
+| --- | ---: | ---: | ---: | --- |
+| Flat wall | 0.333 | −0.131 | −0.209 | fail, dominant 0.215 at 15.76 m |
+| Mass on the mix slope | 0.653 | +0.291 | +0.179 | fail, dominant 0.078 at 2.96 m |
+| Wall plus the slope | 0.422 | +0.177 | −0.077 | fail, dominant 0.131 at 16.15 m |
+| Larger of wall and slope | 0.504 | +0.149 | −0.143 | fail, dominant 0.197 at 16.15 m |
+
+The slope placement clears both shoulders. At the inner edge the shift is still 0.995 and the density is 0.093 of peak, under a flux of 0.118. Putting wall density back under that edge, either by adding it to the slope or by taking the larger of the two profiles, reopens the outer shoulder before the edge reaches zero. Logs `data/dial_sixth_push.txt`, `data/dial_sixth_cover.txt`, and `data/dial_sixth_max.txt`.
+
 ## Audit of the 20 m shell
 
 Log `data/dial_audit_bar.txt`, dated 2026-10-29. Same mix, same N = 120 grid. A fresh 0.10c run at compactness 1/2 reproduces the line above: energy 8.2868×10²⁷ kg, dominant ratio 1.92×10⁻⁵ in the exterior at 26.47 m, shift 0.10, clean. With the shift off, compactness 1/2 is clean at energy 8.3144×10²⁷ kg, dominant 1.95×10⁻⁵, and compactness 1/3 is clean at energy 5.1495×10²⁷ kg, dominant 1.71×10⁻⁵. Both parked violations sit at 26.47 m. The smoothed density on this grid ends at 26.57 m. The check is written out in [AUDIT.md](AUDIT.md).

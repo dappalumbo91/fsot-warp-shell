@@ -1,0 +1,29 @@
+sixth max: larger of wall and slope, mass returned to C=1/6. R2=20.000 R1=2.853 v=0.04
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+M=2.244318e+27 (1.182 Mjup) rhoUni=6.716892e+22 rhoHalf=2.015068e+23
+mix max |dS|=1.32691e-01 /m at r=12.967
+max integral before return / M = 1.2955
+max mass peak rho=1.015677e+23 at r=12.591  peak/rhoHalf=0.504 peak/rhoUni=1.512
+r  rho/rhoHalf  rho/rhoUni  which
+  2.85  0.1231  0.3692  wall
+  9.78  0.3755  1.1266  slope
+ 12.00  0.4968  1.4905  slope
+ 15.70  0.3173  0.9518  slope
+ 17.52  0.2264  0.6793  wall
+mass fraction 0.0-8.0 m = 0.043
+mass fraction 8.0-13.0 m = 0.273
+mass fraction 13.0-18.0 m = 0.446
+mass fraction 18.0-27.0 m = 0.237
+M(end)/M=1.0000 min(1-Rs/r)=0.8490
+null worst/peak=9.114e-02 at r=16.568 off=63.1 T01=-0.2426 T11=0.0063
+weak worst/peak=9.114e-02 at r=16.568 off=63.1 T01=-0.2426 T11=0.0063
+strong worst/peak=9.114e-02 at r=16.568 off=63.1 T01=-0.2426 T11=0.0063
+dominant worst/peak=1.967e-01 at r=16.151 off=87.6 T01=-0.3476 T11=0.0123
+E=2.3665e+27 null=9.114e-02 weak=9.114e-02 strong=9.114e-02 dom=1.967e-01 ser=0.0244 shift=4.000e-02 FAIL 12.3s
+r rho T01 dom
+  2.85  0.2438  0.1479 -0.0680
+  9.78  0.7428  0.3447  0.1485
+ 12.00  0.9804  0.2282  0.5114
+ 15.70  0.6268 -0.3570 -0.1433
+ 17.52  0.4488 -0.1821  0.1428
+sixth max done

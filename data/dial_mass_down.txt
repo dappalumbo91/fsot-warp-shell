@@ -1,0 +1,54 @@
+mass down, fixed R2=20.000 R1=2.853. Density falls with compactness.
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+C=1/2 reference: M=6.732955e+27 (3.547 Mjup) rho=2.015068e+23
+
+-- C=0.250 M=3.366477e+27 (1.774 Mjup) rho=1.007534e+23 rho/rhoHalf=0.500
+same density as the C=1/2 wall: R2=14.142 M=2.380459e+27 (1.254 Mjup)
+== C=0.250 v=0.04
+null worst/peak=8.748e-06 at r=26.216 off=85.5 T01=-0.0000 T11=0.0000
+weak worst/peak=1.772e-05 at r=26.216 off=4.5 T01=-0.0000 T11=0.0000
+strong worst/peak=8.748e-06 at r=26.216 off=85.5 T01=-0.0000 T11=0.0000
+dominant worst/peak=1.600e-05 at r=26.467 off=69.4 T01=-0.0000 T11=0.0000
+E=3.7374e+27 null=8.748e-06 weak=1.772e-05 strong=8.748e-06 dom=1.600e-05 ser=0.0000 shift=4.000e-02 CLEAN 15.6s
+r rho T01 dom
+  9.78  0.9968  0.3533  0.3982
+ 12.00  0.9943  0.2375  0.5184
+ 15.70  0.9880 -0.3774  0.3605
+ 17.52  0.8989 -0.1855  0.4906
+== C=0.250 v=0.06
+null worst/peak=5.249e-02 at r=15.723 off=85.9 T01=-0.5632 T11=0.0395
+weak worst/peak=5.249e-02 at r=15.723 off=85.9 T01=-0.5632 T11=0.0395
+strong worst/peak=5.249e-02 at r=15.723 off=85.9 T01=-0.5632 T11=0.0395
+dominant worst/peak=2.236e-01 at r=15.723 off=85.9 T01=-0.5632 T11=0.0395
+E=3.7335e+27 null=5.249e-02 weak=5.249e-02 strong=5.249e-02 dom=2.236e-01 ser=0.0190 shift=6.000e-02 FAIL 15.8s
+r rho T01 dom
+  9.78  0.9929  0.5290 -0.1657
+ 12.00  0.9872  0.3561  0.3848
+ 15.70  0.9850 -0.5652 -0.2183
+ 17.52  0.8976 -0.2778  0.3978
+
+-- C=0.200 M=2.693182e+27 (1.419 Mjup) rho=8.060270e+22 rho/rhoHalf=0.400
+same density as the C=1/2 wall: R2=12.649 M=1.703318e+27 (0.897 Mjup)
+== C=0.200 v=0.04
+null worst/peak=8.475e-06 at r=26.256 off=84.5 T01=-0.0000 T11=0.0000
+weak worst/peak=1.715e-05 at r=26.256 off=5.5 T01=-0.0000 T11=0.0000
+strong worst/peak=8.475e-06 at r=26.256 off=84.5 T01=-0.0000 T11=0.0000
+dominant worst/peak=1.543e-05 at r=26.467 off=69.4 T01=-0.0000 T11=0.0000
+E=2.9362e+27 null=8.475e-06 weak=1.715e-05 strong=8.475e-06 dom=1.543e-05 ser=0.0000 shift=4.000e-02 CLEAN 15.6s
+r rho T01 dom
+  9.78  0.9966  0.4359  0.2669
+ 12.00  0.9936  0.2990  0.4540
+ 15.70  0.9878 -0.4650  0.2085
+ 17.52  0.8990 -0.2328  0.4453
+== C=0.200 v=0.06
+null worst/peak=1.871e-01 at r=15.762 off=84.2 T01=-0.6907 T11=0.0329
+weak worst/peak=1.871e-01 at r=15.762 off=84.2 T01=-0.6907 T11=0.0329
+strong worst/peak=1.871e-01 at r=15.762 off=84.2 T01=-0.6907 T11=0.0329
+dominant worst/peak=4.224e-01 at r=15.723 off=85.9 T01=-0.6942 T11=0.0336
+E=2.9324e+27 null=1.871e-01 weak=1.871e-01 strong=1.871e-01 dom=4.224e-01 ser=0.0737 shift=6.000e-02 FAIL 15.6s
+r rho T01 dom
+  9.78  0.9924  0.6529 -0.4078
+ 12.00  0.9857  0.4482  0.2075
+ 15.70  0.9846 -0.6966 -0.4198
+ 17.52  0.8978 -0.3487  0.3072
+mass down done
