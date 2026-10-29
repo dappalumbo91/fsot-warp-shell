@@ -96,13 +96,26 @@ def save(fig, name):
 def fig_speed():
     # Rows are solver cases. Marks are scored speeds.
     rows = [
-        ("Fuchs et al. 2024\n10–20 m shell", [(0.02, "pass")]),
-        ("This port, Fuchs-type\n50–110 m, compactness 1/3", [(0.10, "fail")]),
+        ("Fuchs et al. 2024\n10 m cabin, 20 m shell", [(0.02, "pass")]),
+        ("Their cabin, this port\ncompactness 1/2", [(0.04, "pass"), (0.06, "fail")]),
+        ("FSOT wall at 20 m\ntheir mass, compactness 1/3", [(0.06, "pass"), (0.10, "fail")]),
+        ("FSOT wall at 20 m\ncompactness 1/2", [(0.10, "pass"), (0.11, "fail")]),
         ("FSOT condensate shell\n1.40–9.81 km", [(0.095, "pass"), (0.10, "pass"), (0.11, "fail")]),
     ]
-    fig, ax = plt.subplots(figsize=(8.8, 4.8), layout="constrained")
+    fig, ax = plt.subplots(figsize=(9.4, 6.6), layout="constrained")
     # After invert_yaxis, negative dy sits visually above the marker.
-    label_at = {(0, 0.02): -0.32, (1, 0.10): -0.32, (2, 0.095): -0.32, (2, 0.10): 0.36, (2, 0.11): -0.32}
+    label_at = {
+        (0, 0.02): -0.32,
+        (1, 0.04): -0.30,
+        (1, 0.06): -0.62,
+        (2, 0.06): -0.32,
+        (2, 0.10): -0.32,
+        (3, 0.10): -0.30,
+        (3, 0.11): -0.62,
+        (4, 0.095): -0.32,
+        (4, 0.10): 0.36,
+        (4, 0.11): -0.32,
+    }
     for i, (label, marks) in enumerate(rows):
         ax.plot([0, 0.12], [i, i], color="#d5dde3", lw=6, solid_capstyle="round", zorder=0)
         for speed, status in marks:
@@ -113,9 +126,9 @@ def fig_speed():
     ax.set_yticklabels([r[0] for r in rows])
     ax.set_xlabel("Shift speed    clean bar: four ratios under 1e-3, serious fraction 0, positive energy")
     ax.set_xlim(0, 0.125)
-    ax.set_ylim(-0.7, 2.7)
+    ax.set_ylim(-0.85, 4.85)
     ax.invert_yaxis()
-    ax.set_title("Eulerian Warp Factory speeds\n0.10c is five times the published pass. 0.11c fails in the wall.")
+    ax.set_title("Eulerian Warp Factory speeds\nAt 20 m the FSOT wall clears 0.10c. Their cabin clears 0.04c.")
     ax.scatter([], [], color=PASS, label="Under the clean bar")
     ax.scatter([], [], color=FAIL, label="Over the clean bar")
     ax.legend(frameon=False, loc="center left", bbox_to_anchor=(1.01, 0.5))

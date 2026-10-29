@@ -1,0 +1,57 @@
+cabin gap: compactness 1/2, their R1/R2 = 1/2, legacy R1 = 50 m at R2 = 110 m
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+
+-- fuchs R2=20.000 R1=10.000 R1/R2=0.500 C=0.500 m=6.732955e+27 N=120 h=0.4545 S(0)=1.00000 S(R2)=0.00022
+r/R2 S Ssig Sprs dS
+0.500 0.97777 0.99978 0.97776 -3.679534e-02
+0.600 0.85104 0.95417 0.84608 -7.430923e-02
+0.700 0.67587 0.69023 0.66942 -1.174961e-01
+0.800 0.34756 0.30977 0.46913 -1.967428e-01
+0.900 0.04788 0.04583 0.24559 -7.323046e-02
+1.000 0.00022 0.00022 0.03885 -1.066223e-03
+== fuchs v=0.04 max|g_tx|=0.0400
+null worst/peak=1.106e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg T01/pk=-0.0000 T11/pk=0.0000
+weak worst/peak=2.232e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=4.5 deg T01/pk=-0.0000 T11/pk=0.0000
+strong worst/peak=1.106e-05 at r=26.216 m (exterior) g_tx=-0.0000 off-axis=85.5 deg T01/pk=-0.0000 T11/pk=0.0000
+dominant worst/peak=1.970e-05 at r=26.467 m (exterior) g_tx=-0.0000 off-axis=69.4 deg T01/pk=-0.0000 T11/pk=0.0000
+E=8.1598e+27 null=1.106e-05 weak=2.232e-05 strong=1.106e-05 dom=1.970e-05 ser=0.0000 shift=4.000e-02 CLEAN 12.4s
+== fuchs v=0.06 max|g_tx|=0.0600
+null worst/peak=1.421e-01 at r=17.537 m (wall) g_tx=-0.0054 off-axis=86.3 deg T01/pk=-0.6055 T11/pk=0.0315
+weak worst/peak=1.421e-01 at r=17.537 m (wall) g_tx=-0.0054 off-axis=86.3 deg T01/pk=-0.6055 T11/pk=0.0315
+strong worst/peak=1.421e-01 at r=17.537 m (wall) g_tx=-0.0054 off-axis=86.3 deg T01/pk=-0.6055 T11/pk=0.0315
+dominant worst/peak=3.517e-01 at r=17.513 m (wall) g_tx=-0.0056 off-axis=87.8 deg T01/pk=-0.6083 T11/pk=0.0328
+E=8.1483e+27 null=1.421e-01 weak=1.421e-01 strong=1.421e-01 dom=3.517e-01 ser=0.0328 shift=6.000e-02 FAIL 11.9s
+== fuchs v=0.10 max|g_tx|=0.1000
+null worst/peak=5.325e-01 at r=17.537 m (wall) g_tx=-0.0091 off-axis=86.3 deg T01/pk=-1.0011 T11/pk=0.0556
+weak worst/peak=5.325e-01 at r=17.537 m (wall) g_tx=-0.0091 off-axis=86.3 deg T01/pk=-1.0011 T11/pk=0.0556
+strong worst/peak=5.325e-01 at r=17.537 m (wall) g_tx=-0.0091 off-axis=86.3 deg T01/pk=-1.0011 T11/pk=0.0556
+dominant worst/peak=6.781e-01 at r=17.501 m (wall) g_tx=-0.0095 off-axis=89.3 deg T01/pk=-1.0079 T11/pk=0.0589
+E=8.1119e+27 null=5.325e-01 weak=5.325e-01 strong=5.325e-01 dom=6.781e-01 ser=0.1186 shift=1.000e-01 FAIL 11.9s
+
+-- legacy R2=110.000 R1=50.000 R1/R2=0.455 C=0.500 m=3.703125e+28 N=120 h=2.5000 S(0)=1.00000 S(R2)=0.00012
+r/R2 S Ssig Sprs dS
+0.455 0.98072 0.99988 0.98072 -5.811991e-03
+0.600 0.80784 0.89694 0.79760 -1.272163e-02
+0.700 0.61701 0.59726 0.63106 -2.409359e-02
+0.800 0.28169 0.24934 0.44224 -3.271442e-02
+0.900 0.03356 0.03247 0.23151 -9.790642e-03
+1.000 0.00012 0.00012 0.03662 -1.087809e-04
+== legacy v=0.04 max|g_tx|=0.0400
+null worst/peak=1.097e-05 at r=144.190 m (exterior) g_tx=-0.0000 off-axis=85.5 deg T01/pk=-0.0000 T11/pk=0.0000
+weak worst/peak=2.214e-05 at r=144.190 m (exterior) g_tx=-0.0000 off-axis=4.5 deg T01/pk=-0.0000 T11/pk=0.0000
+strong worst/peak=1.097e-05 at r=144.190 m (exterior) g_tx=-0.0000 off-axis=85.5 deg T01/pk=-0.0000 T11/pk=0.0000
+dominant worst/peak=1.959e-05 at r=145.570 m (exterior) g_tx=-0.0000 off-axis=69.4 deg T01/pk=-0.0000 T11/pk=0.0000
+E=4.5009e+28 null=1.097e-05 weak=2.214e-05 strong=1.097e-05 dom=1.959e-05 ser=0.0000 shift=4.000e-02 CLEAN 12.5s
+== legacy v=0.06 max|g_tx|=0.0600
+null worst/peak=7.025e-02 at r=94.753 m (wall) g_tx=-0.0058 off-axis=81.7 deg T01/pk=-0.5470 T11/pk=0.0464
+weak worst/peak=7.025e-02 at r=94.753 m (wall) g_tx=-0.0058 off-axis=81.7 deg T01/pk=-0.5470 T11/pk=0.0464
+strong worst/peak=7.025e-02 at r=94.753 m (wall) g_tx=-0.0058 off-axis=81.7 deg T01/pk=-0.5470 T11/pk=0.0464
+dominant worst/peak=2.481e-01 at r=94.753 m (wall) g_tx=-0.0058 off-axis=81.7 deg T01/pk=-0.5470 T11/pk=0.0464
+E=4.4953e+28 null=7.025e-02 weak=7.025e-02 strong=7.025e-02 dom=2.481e-01 ser=0.0198 shift=6.000e-02 FAIL 12.2s
+== legacy v=0.10 max|g_tx|=0.1000
+null worst/peak=4.264e-01 at r=94.753 m (wall) g_tx=-0.0096 off-axis=81.7 deg T01/pk=-0.9041 T11/pk=0.0696
+weak worst/peak=4.264e-01 at r=94.753 m (wall) g_tx=-0.0096 off-axis=81.7 deg T01/pk=-0.9041 T11/pk=0.0696
+strong worst/peak=4.264e-01 at r=94.753 m (wall) g_tx=-0.0096 off-axis=81.7 deg T01/pk=-0.9041 T11/pk=0.0696
+dominant worst/peak=6.002e-01 at r=94.753 m (wall) g_tx=-0.0096 off-axis=81.7 deg T01/pk=-0.9041 T11/pk=0.0696
+E=4.4774e+28 null=4.264e-01 weak=4.264e-01 strong=4.264e-01 dom=6.002e-01 ser=0.1017 shift=1.000e-01 FAIL 12.2s
+cabin gap done

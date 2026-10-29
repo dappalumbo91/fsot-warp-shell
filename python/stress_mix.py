@@ -24,6 +24,8 @@ FINE = ROOT / "data" / "dial_mix_fine.txt"
 CENTER = ROOT / "data" / "dial_center.txt"
 FLAT = ROOT / "data" / "dial_flatball.txt"
 FLAT11 = ROOT / "data" / "dial_flatball_11_fine.txt"
+SIZE = ROOT / "data" / "dial_fuchs_size.txt"
+CABIN = ROOT / "data" / "dial_cabin_gap.txt"
 C_ROUTE = 2.99792e8
 G_ROUTE = 6.674e-11
 C_WF = 2.99792458e8
@@ -188,6 +190,41 @@ def flat11_log() -> None:
     )
 
 
+def size_log() -> None:
+    text = SIZE.read_text(encoding="utf-8")
+    check("20 m size log finished", "fuchs size done" in text, "dial_fuchs_size.txt")
+    check(
+        "20 m compactness 1/3 is clean at 0.06c",
+        "E=5.1417e+27 null=9.336e-06 weak=1.890e-05 strong=9.336e-06 dom=1.700e-05 ser=0.0000 shift=6.000e-02 CLEAN" in text,
+        "dial_fuchs_size.txt",
+    )
+    check(
+        "20 m compactness 1/2 is clean at 0.10c",
+        "E=8.2868e+27 null=1.067e-05 weak=2.158e-05 strong=1.067e-05 dom=1.923e-05 ser=0.0000 shift=1.000e-01 CLEAN" in text,
+        "dial_fuchs_size.txt",
+    )
+    check(
+        "20 m compactness 1/2 fails at 0.11c",
+        "null=3.567e-02 weak=3.567e-02 strong=3.567e-02 dom=1.771e-01" in text and "shift=1.100e-01 FAIL" in text,
+        "dial_fuchs_size.txt",
+    )
+
+
+def cabin_log() -> None:
+    text = CABIN.read_text(encoding="utf-8")
+    check("cabin log finished", "cabin gap done" in text, "dial_cabin_gap.txt")
+    check(
+        "their cabin at compactness 1/2 is clean at 0.04c",
+        "E=8.1598e+27 null=1.106e-05 weak=2.232e-05 strong=1.106e-05 dom=1.970e-05 ser=0.0000 shift=4.000e-02 CLEAN" in text,
+        "dial_cabin_gap.txt",
+    )
+    check(
+        "their cabin fails at 0.06c",
+        "null=1.421e-01 weak=1.421e-01 strong=1.421e-01 dom=3.517e-01" in text and "shift=6.000e-02 FAIL" in text,
+        "dial_cabin_gap.txt",
+    )
+
+
 def main() -> int:
     algebra()
     shell_file()
@@ -197,6 +234,8 @@ def main() -> int:
     center_log()
     flat_log()
     flat11_log()
+    size_log()
+    cabin_log()
     print(f"RESULT  {len(failures)} failures")
     return 1 if failures else 0
 

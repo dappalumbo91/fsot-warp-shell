@@ -4,13 +4,17 @@
 **License:** Apache-2.0  
 **Pin:** FSOT 2.1 AEB2AD, from [FSOT-2.1-Lean](https://github.com/dappalumbo91/FSOT-2.1-Lean)
 
-A constant-speed warp shell, scored in Warp Factory. The published positive-mass pass in this solver is Fuchs et al. 2024: **0.02c** on a 10–20 m shell. This condensate shell is clean at **0.10c**, five times that speed, on the 166.8 m grid and on the 83.4 m grid once the flat cavity is given its continuum value of zero. The shell is 491 times larger in outer radius, 736 times heavier, and about 1.8×10⁵ times less dense.
+A constant-speed warp shell, scored in Warp Factory. The published positive-mass pass in this solver is Fuchs et al. 2024: **0.02c** on a 10–20 m shell, mass 4.49×10²⁷ kg.
+
+At that same 20 m outer radius the FSOT wall is clean at **0.10c** when the compactness is 1/2. The mass is 6.73×10²⁷ kg, 1.5 times the published mass, and the cabin is 2.85 m. At the published compactness 1/3, which is their mass, that wall is clean at **0.06c** and fails at 0.10c. Their own 10 m cabin, at compactness 1/2, is clean at **0.04c** and fails at 0.06c.
+
+The condensate body, 1.40 km to 9.81 km, is the shell at the pin density. It is clean at **0.10c** on the 166.8 m grid and on the 83.4 m grid once the flat cavity is given its continuum value of zero. That body is 491 times larger in outer radius, 736 times heavier, and about 1.8×10⁵ times less dense than the published shell. The 20 m FSOT wall is the other way: about 1.3 times the published density. The pin does not fill 20 m.
 
 The raw 83.4 m difference misses that bar on four samples at 59 m. Those samples sit inside a ball, r < 87.55 m, where the constructed metric is exactly flat, so the continuum stress-energy is zero. The fourth-order stencil reaches outside the ball and reports a false negative. Setting those four cells back to zero puts the 83.4 m score under the bar. The worst remaining weak ratio is 4.006×10⁻⁷, in the exterior mass skirt. The wall is quiet on both grids. This is a simulation of a coast at constant speed.
 
 ![Eulerian speeds](figures/speed_limit.png)
 
-The green marks are under the clean bar. The red marks are over it. The top row is the published 0.02c pass. The middle row is a larger copy of that kind of shell, scored in this port, which fails at 0.10c. The bottom row is the FSOT condensate shell: clean at 0.095c and 0.10c, failed at 0.11c. The 0.10c mark also holds on the 83.4 m grid after the flat-ball restoration.
+The green marks are under the clean bar. The red marks are over it. At the published 20 m radius, their cabin is clean at 0.04c and fails at 0.06c. The FSOT wall at their mass is clean at 0.06c. The FSOT wall at compactness 1/2 is clean at 0.10c and fails at 0.11c. The condensate shell is clean at 0.095c and 0.10c, and the 0.10c mark also holds on the 83.4 m grid after the flat-ball restoration. A 50–110 m Fuchs-type shell in this port still fails at 0.10c.
 
 ## The shell
 
@@ -24,7 +28,7 @@ The green marks are under the clean bar. The red marks are over it. The top row 
 | Finer grid, raw difference |  | 83.4 m, four samples at 59 m, weak ratio 1.476×10⁻³ |
 | Finer grid, flat ball restored |  | 83.4 m, weak ratio 4.006×10⁻⁷ in the exterior skirt |
 
-The clean speed is 5 times the published pass. A 50–110 m shell of the Fuchs type, scored in this same port at compactness 1/3, fails at 0.10c. The speed here belongs to this condensate body. Both masses are the positive mass of the shell in the metric.
+The clean speed on the condensate body is 5 times the published pass. The same speed is clean at 20 m on the FSOT wall when the compactness is 1/2. A 50–110 m shell of the Fuchs type, scored in this same port at compactness 1/3, fails at 0.10c. Both masses are the positive mass of the shell in the metric.
 
 ![Scale](figures/scale_contrast.png)
 
@@ -100,11 +104,11 @@ lake env lean lean/WarpMix.lean
 
 Run that from the FSOT-2.1-Lean repository so Mathlib resolves. The file is not part of the published `FSOT` library.
 
-The metric score uses the Octave port of [Warp Factory](https://github.com/NerdsWithAttitudes/WarpFactory) at commit `03b10cb`. Copy `octave/dial_mix.m` into that port's `fsot_warp` directory. Set `SHELL_ENV` to `data/shell_env.txt` and `OUT` to a writable directory. The clean log from that script is `data/dial_mix.txt`. `octave/dial_mix_fine.m` is the same join at `N = 320`. Its log is `data/dial_mix_fine.txt`. `octave/dial_center.m` is the shift-off census. Its log is `data/dial_center.txt`. `octave/dial_flatball.m` restores the flat ball. Its log is `data/dial_flatball.txt`.
+The metric score uses the Octave port of [Warp Factory](https://github.com/NerdsWithAttitudes/WarpFactory) at commit `03b10cb`. Copy `octave/dial_mix.m` into that port's `fsot_warp` directory. Set `SHELL_ENV` to `data/shell_env.txt` and `OUT` to a writable directory. The clean log from that script is `data/dial_mix.txt`. `octave/dial_mix_fine.m` is the same join at `N = 320`. Its log is `data/dial_mix_fine.txt`. `octave/dial_center.m` is the shift-off census. Its log is `data/dial_center.txt`. `octave/dial_flatball.m` restores the flat ball. Its log is `data/dial_flatball.txt`. `octave/dial_fuchs_size.m` scores the FSOT wall at 20 m. Its log is `data/dial_fuchs_size.txt`. `octave/dial_cabin_gap.m` scores their cabin at compactness 1/2. Its log is `data/dial_cabin_gap.txt`.
 
 ## Limits
 
-The metric is a coast at constant speed. Acceleration is not in the run. The test is Warp Factory's Eulerian energy conditions, sampled on the solver's observer set. On the 166.8 m grid the 0.10c mix is under the clean bar. On the 83.4 m grid the raw difference is over the bar on four samples inside the flat ball, and the restored continuum value is under the bar. The 166.8 m grid's tight cell at 118 m sits outside that ball, where the smoothed density has already turned on, and its stencil residual remains under the bar. A stricter all-observer standard published later has not been run on this shell. 0.11c on this join fails in the outer wall on both grids. The 83.4 m score is in `data/dial_flatball_11_fine.txt`: dominant ratio 0.177 at 7,720 m.
+The metric is a coast at constant speed. Acceleration is not in the run. The test is Warp Factory's Eulerian energy conditions, sampled on the solver's observer set. On the 166.8 m grid the 0.10c mix is under the clean bar. On the 83.4 m grid the raw difference is over the bar on four samples inside the flat ball, and the restored continuum value is under the bar. The 166.8 m grid's tight cell at 118 m sits outside that ball, where the smoothed density has already turned on, and its stencil residual remains under the bar. A stricter all-observer standard published later has not been run on this shell. 0.11c on this join fails in the outer wall on both grids, and at the same fraction of the radius on the 20 m shell. The 83.4 m score is in `data/dial_flatball_11_fine.txt`: dominant ratio 0.177 at 7,720 m. On the 20 m FSOT wall the same ratio is 0.177 at 15.7 m (`data/dial_fuchs_size.txt`). Their 10 m cabin does not hold 0.06c (`data/dial_cabin_gap.txt`).
 
 ## License
 
