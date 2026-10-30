@@ -129,6 +129,26 @@ Holding the max slope through the strongest bend, then falling to the slope at t
 
 The light clean shell remains the one-sixth bend window at 0.04c.
 
+## That mass is the pull
+
+Dated 2026-10-30. The clean one-sixth window is an external gravitational mass of 2.244×10²⁷ kg, 1.182 Jupiter, 376 Earths, rest energy 2.017×10⁴⁴ J. Inside about 58,000 km the tide across the Earth exceeds 1 g. In low orbit the whole Earth falls toward the shell at about 330 g. At the Moon the pull is 0.10 g and the tide across the Earth is about 30,000 times the lunar tide. The shell matches the Moon's pull on the Earth from 0.45 AU. Earth escape is 11.2 km/s and solar escape from Earth's orbit is 42.1 km/s. Those wells do not supply 0.04c. A new well deep enough for 0.04c is a gravitational mass again.
+
+A 10 tonne ship at 0.04c has kinetic energy 7.20×10¹⁷ J, 8.0 kg of mass-energy. A photon rocket to that speed is mass ratio 1.041 and 408 kg of directed light, 3.67×10¹⁹ J, for the outbound burn alone. Accel and stop with exhaust at 0.04c is mass ratio 7.40, 64 tonnes of propellant, 4.60×10¹⁸ J. At 1 g the plant on that burn needs 4.3×10⁸ W/kg and does not lift itself.
+
+Two perfect sails, momentum 2E/c, plant at home, 10 tonne ship:
+
+| Beam | Peak speed | Trip | Energy, both legs |
+| --- | ---: | ---: | ---: |
+| 1 GW | 0.51 km/s | 422 h | 1.52×10¹⁵ J |
+| 10 GW | 1.60 km/s | 133 h | 4.80×10¹⁵ J |
+| 100 GW | 5.06 km/s | 42 h | 1.52×10¹⁶ J |
+| 1 TW | 16.0 km/s | 13.3 h | 4.80×10¹⁶ J |
+| 15 TW | 62 km/s | 3.44 h | 1.86×10¹⁷ J |
+
+Reaching 0.04c on a sail is 1.80×10¹⁹ J. A 15 TW beam takes 14 days and 48 AU. At 1 µm a 100 m sail needs a 3.8 m aperture at the Moon and a 73 km aperture at 49 AU.
+
+Heat: both faces radiate, absorbed intensity equals 2 ε σ T⁴, and the spot is kept the size of the sail. Film 10 g/m², absorption 0.001, emissivity 0.5, 600 K, intensity 7.35×10⁶ W/m². A 10 tonne sheet is 1.13 km across. Plus 10 tonnes of ship: 0.25 g on 7.35 TW, peak 30.7 km/s, 7.0 hours, lunar aperture 0.34 m. Both beams deliver 1.84×10¹⁷ J. Station hardware at 100 W/kg is 7.3×10⁷ tonnes; at 10 W/kg it is 7.3×10⁸ tonnes, on the ground. The same film at 1200 K is 4 g, 1.18×10¹⁴ W, peak 123 km/s, 1.7 hours. One g at 600 K on this loading would need absorption 1.25×10⁻⁴. That is a material target, not a measured sail. This section is not an energy-condition score. The Eulerian light shell remains the one-sixth bend window at 0.04c.
+
 ## Audit of the 20 m shell
 
 Log `data/dial_audit_bar.txt`, dated 2026-10-29. Same mix, same N = 120 grid. A fresh 0.10c run at compactness 1/2 reproduces the line above: energy 8.2868×10²⁷ kg, dominant ratio 1.92×10⁻⁵ in the exterior at 26.47 m, shift 0.10, clean. With the shift off, compactness 1/2 is clean at energy 8.3144×10²⁷ kg, dominant 1.95×10⁻⁵, and compactness 1/3 is clean at energy 5.1495×10²⁷ kg, dominant 1.71×10⁻⁵. Both parked violations sit at 26.47 m. The smoothed density on this grid ends at 26.57 m. The check is written out in [AUDIT.md](AUDIT.md).
