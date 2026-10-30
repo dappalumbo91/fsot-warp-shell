@@ -125,6 +125,8 @@ Drawing the chord to the shell face and applying it only inside the window raise
 
 The one-sixth window at 0.06c fails across the side. Dominant 0.222 at 16.14 m, null 0.102, serious fraction 0.076. The side ray is negative at 2.85 m, 9.78 m, and 15.70 m. The middle at 12 m stays at +0.376. Log `data/dial_sixth_bend_06.txt`.
 
+Holding the max slope through the strongest bend, then falling to the slope at the window end, puts the lift on the notch and keeps the floor continuous at both ends. At compactness 1/7 the side band comes back positive. At 16.5 m the margin is +0.049. The mass from 13 m to 18 m rises from 0.538 to 0.571. The steep side falls from 0.322 to 0.256, and the steepest slope fails: dominant 0.335 at 12.96 m, 38° off the boost, flux +0.143. The side ray at 9.78 m is −0.149. The foot ray at 2.85 m is −0.024. Energy 2.017×10²⁷ kg. Log `data/dial_seventh_plateau.txt`.
+
 The light clean shell remains the one-sixth bend window at 0.04c.
 
 ## Audit of the 20 m shell
