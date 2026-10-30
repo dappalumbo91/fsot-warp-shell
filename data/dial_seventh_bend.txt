@@ -1,0 +1,50 @@
+seventh bend: same window at compactness 1/7. R2=20.000 R1=2.853 C=0.1429 v=0.04
+clean: all four worst/peak < 1e-3, serious fraction 0, E>0, finite peak, shift = speed
+M=1.923701e+27 (1.013 Mjup) rhoUni=5.757336e+22 rhoHalf=2.015068e+23
+mix max |dS|=1.32717e-01 /m at r=12.967
+strongest bend r=15.710 d2S=3.82484e-02  window end r=18.454 |dS|=3.06556e-03
+r  |dS|  chord  weight/|dS|
+  9.78  8.17604e-02  2.08011e-01  1.000
+ 12.00  1.26137e-01  1.55557e-01  1.000
+ 14.00  1.23456e-01  1.08302e-01  1.000
+ 15.70  7.07188e-02  6.81351e-02  1.000
+ 16.67  3.58726e-02  4.52163e-02  1.260
+ 17.52  1.43628e-02  2.51328e-02  1.750
+ 19.00  8.19107e-04 -9.83612e-03  1.000
+rCross=8.166 rFlip=12.967 excess/M=0.0184 pay/M=0.3327
+payment scale=0.9445 M(end)/M before trim=0.999998
+inner mass peak rho=1.083428e+23 at r=12.967  peak/rhoHalf=0.538 peak/rhoUni=1.882
+r  rho/rhoHalf  rho/rhoUni
+  2.85  0.1366  0.4783
+  9.78  0.3792  1.3271
+ 12.00  0.5022  1.7578
+ 15.70  0.3535  1.2373
+ 17.52  0.1727  0.6044
+mass fraction 0.0-8.0 m = 0.056
+mass fraction 8.0-13.0 m = 0.322
+mass fraction 13.0-18.0 m = 0.538
+mass fraction 18.0-27.0 m = 0.084
+M(end)/M=1.0000 min(1-Rs/r)=0.8545
+null worst/peak=3.264e-02 at r=16.605 off=87.6 T01=-0.2474 T11=0.0064
+weak worst/peak=3.264e-02 at r=16.605 off=87.6 T01=-0.2474 T11=0.0064
+strong worst/peak=3.264e-02 at r=16.605 off=87.6 T01=-0.2474 T11=0.0064
+dominant worst/peak=1.176e-01 at r=16.592 off=89.2 T01=-0.2489 T11=0.0065
+E=2.0207e+27 null=3.264e-02 weak=3.264e-02 strong=3.264e-02 dom=1.176e-01 ser=0.0187 shift=4.000e-02 FAIL 14.0s
+r rho T01 dom
+  2.85  0.2216  0.1188 -0.0211
+  9.78  0.6140  0.2779  0.1381
+ 12.00  0.8114  0.1837  0.4277
+ 15.70  0.5728 -0.2871  0.0618
+ 17.52  0.2804 -0.1456 -0.0325
+foot r<8 dom worst/peak=3.324e-02 outer r>10 dom worst/peak=1.176e-01
+r dom/pk ang rho/pk T01/pk nneg
+ 14.00  4.4176e-01  19.6  0.7848  0.1119 0
+ 14.50  3.3677e-01  76.6  0.7226 -0.1969 0
+ 15.00  2.0003e-01  87.4  0.6462 -0.2675 0
+ 15.50  4.5842e-02  85.9  0.5691 -0.2861 0
+ 16.00 -1.1379e-01  84.4  0.4869 -0.2734 48
+ 16.50 -1.1758e-01  89.2  0.4239 -0.2489 80
+ 17.00 -1.0614e-01  81.4  0.3936 -0.2256 80
+ 17.50 -6.0633e-02  80.2  0.3123 -0.1668 38
+ 18.00  5.3269e-02  79.0  0.2382 -0.1056 0
+seventh bend done

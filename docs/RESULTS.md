@@ -117,6 +117,16 @@ The side ray is positive through the wall: +0.055 at 2.85 m, +0.210 at 9.78 m, +
 
 At this fixed 20 m radius the shell is 1.182 Jupiter masses. The uniform one-fifth wall at the same radius is 1.419 Jupiter masses. The peak here is 0.627 of the half-compact density, above the uniform one-fifth density and under that ceiling. Resizing this shape so the peak equals the ceiling, same profile, gives an outer radius of 15.84 m and a mass of 1.777×10²⁷ kg, 0.936 Jupiter. That is a scale of the scored shell, not a second grid. The uniform one-fifth wall, resized so its own density equals the ceiling, remains 12.65 m and 0.897 Jupiter. The 0.10c shell remains compactness 1/2.
 
+## Where that window stops
+
+Same placement, dated 2026-10-30. Compactness 1/7 is mass 1.924×10²⁷ kg, 1.013 Jupiter, peak density 0.538 of the half-compact wall. The mass fractions match the one-sixth pass. The side from 16.0 m to 17.5 m is negative. Dominant 0.118 at 16.59 m, flux −0.249. The foot inside 8 m is negative again, worst 0.033. Log `data/dial_seventh_bend.txt`.
+
+Drawing the chord to the shell face and applying it only inside the window raises the raw weight at 16.67 m from 1.26 to 1.75. The notch at 17.5 m comes back positive. The band at 16.5 m stays at −0.099. The worst cell moves to 8.84 m, dominant 0.122, and the side ray at 9.78 m is −0.070. Log `data/dial_seventh_clip.txt`.
+
+The one-sixth window at 0.06c fails across the side. Dominant 0.222 at 16.14 m, null 0.102, serious fraction 0.076. The side ray is negative at 2.85 m, 9.78 m, and 15.70 m. The middle at 12 m stays at +0.376. Log `data/dial_sixth_bend_06.txt`.
+
+The light clean shell remains the one-sixth bend window at 0.04c.
+
 ## Audit of the 20 m shell
 
 Log `data/dial_audit_bar.txt`, dated 2026-10-29. Same mix, same N = 120 grid. A fresh 0.10c run at compactness 1/2 reproduces the line above: energy 8.2868×10²⁷ kg, dominant ratio 1.92×10⁻⁵ in the exterior at 26.47 m, shift 0.10, clean. With the shift off, compactness 1/2 is clean at energy 8.3144×10²⁷ kg, dominant 1.95×10⁻⁵, and compactness 1/3 is clean at energy 5.1495×10²⁷ kg, dominant 1.71×10⁻⁵. Both parked violations sit at 26.47 m. The smoothed density on this grid ends at 26.57 m. The check is written out in [AUDIT.md](AUDIT.md).

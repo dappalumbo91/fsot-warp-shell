@@ -99,32 +99,35 @@ def fig_speed():
         ("Fuchs et al. 2024\n10 m cabin, 20 m shell", [(0.02, "pass")]),
         ("Their cabin, this port\ncompactness 1/2", [(0.04, "pass"), (0.06, "fail")]),
         ("FSOT wall at 20 m\ncompactness 1/6, flat", [(0.04, "fail")]),
-        ("FSOT wall at 20 m\n1/6, bend window", [(0.04, "pass")]),
+        ("FSOT wall at 20 m\n1/6, bend window", [(0.04, "pass"), (0.06, "fail")]),
+        ("FSOT wall at 20 m\n1/7, bend window", [(0.04, "fail")]),
         ("FSOT wall at 20 m\ncompactness 1/5", [(0.04, "pass"), (0.06, "fail")]),
         ("FSOT wall at 20 m\ncompactness 1/4", [(0.04, "pass"), (0.06, "fail")]),
         ("FSOT wall at 20 m\ntheir mass, compactness 1/3", [(0.06, "pass"), (0.10, "fail")]),
         ("FSOT wall at 20 m\ncompactness 1/2", [(0.10, "pass"), (0.11, "fail")]),
         ("FSOT condensate shell\n1.40–9.81 km", [(0.095, "pass"), (0.10, "pass"), (0.11, "fail")]),
     ]
-    fig, ax = plt.subplots(figsize=(9.6, 10.6), layout="constrained")
+    fig, ax = plt.subplots(figsize=(9.6, 11.6), layout="constrained")
     # After invert_yaxis, negative dy sits visually above the marker.
     label_at = {
         (0, 0.02): -0.32,
         (1, 0.04): -0.30,
         (1, 0.06): -0.62,
         (2, 0.04): -0.32,
-        (3, 0.04): -0.32,
-        (4, 0.04): -0.30,
-        (4, 0.06): -0.62,
+        (3, 0.04): -0.30,
+        (3, 0.06): -0.62,
+        (4, 0.04): -0.32,
         (5, 0.04): -0.30,
         (5, 0.06): -0.62,
-        (6, 0.06): -0.32,
-        (6, 0.10): -0.32,
-        (7, 0.10): -0.30,
-        (7, 0.11): -0.62,
-        (8, 0.095): -0.32,
-        (8, 0.10): 0.36,
-        (8, 0.11): -0.32,
+        (6, 0.04): -0.30,
+        (6, 0.06): -0.62,
+        (7, 0.06): -0.32,
+        (7, 0.10): -0.32,
+        (8, 0.10): -0.30,
+        (8, 0.11): -0.62,
+        (9, 0.095): -0.32,
+        (9, 0.10): 0.36,
+        (9, 0.11): -0.32,
     }
     for i, (label, marks) in enumerate(rows):
         ax.plot([0, 0.12], [i, i], color="#d5dde3", lw=6, solid_capstyle="round", zorder=0)
@@ -136,7 +139,7 @@ def fig_speed():
     ax.set_yticklabels([r[0] for r in rows])
     ax.set_xlabel("Shift speed    clean bar: four ratios under 1e-3, serious fraction 0, positive energy")
     ax.set_xlim(0, 0.125)
-    ax.set_ylim(-0.85, 8.85)
+    ax.set_ylim(-0.85, 9.85)
     ax.invert_yaxis()
     ax.set_title("Eulerian Warp Factory speeds\nThe 20 m wall clears 0.10c at compactness 1/2. At 0.04c the light shell is the one-sixth bend window.")
     ax.scatter([], [], color=PASS, label="Under the clean bar")
